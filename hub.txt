@@ -1,0 +1,6 @@
+hub test_hg38_SQANTI3_Hub
+shortLabel test_hg38_SQANTI3_Hub
+longLabel SQANTI3 Transcriptome Analysis for hg38
+genomesFile genomes.txt
+email your.email@example.com
+descriptionUrl test_hg38_SQANTI3_Hub.html

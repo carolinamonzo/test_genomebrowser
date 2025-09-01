@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test_hg38_SQANTI3_Hub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .color-box { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border: 1px solid #ccc; }
+        .legend { margin: 20px 0; }
+        .legend-item { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>test_hg38_SQANTI3_Hub</h1>
+    <p>This hub contains SQANTI3 transcriptome analysis results for hg38.</p>
+    
+    <div class="legend">
+        <h2>Transcript Coloring by Structural Category</h2>
+        <div class="legend-item"><span class="color-box" style="background-color:#6BAED6"></span>Blue: Full splice match</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#FC8D59"></span>Orange: Incomplete splice match</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#78C679"></span>Green: Novel in catalog</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#EE6A50"></span>Red: Novel not in catalog</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#969696"></span>Gray: Genic</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#66C2A4"></span>Teal: Antisense</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#DAA520"></span>Gold: Fusion</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#E9967A"></span>Salmon: Intergenic</div>
+        <div class="legend-item"><span class="color-box" style="background-color:#41B6C4"></span>Cyan: Genic intron</div>
+    </div>
+    
+    <h2>Filter Values</h2>
+    <p>The following filter values are available for all columns from the original classification file:</p>
+    <ul>
+        <li>isoform</li>
+        <li>chrom</li>
+        <li>strand</li>
+        <li>length</li>
+        <li>exons</li>
+        <li>structural_category</li>
+        <li>associated_gene</li>
+        <li>associated_transcript</li>
+        <li>ref_length</li>
+        <li>ref_exons</li>
+        <li>diff_to_TSS</li>
+        <li>diff_to_TTS</li>
+        <li>diff_to_gene_TSS</li>
+        <li>diff_to_gene_TTS</li>
+        <li>subcategory</li>
+        <li>RTS_stage</li>
+        <li>all_canonical</li>
+        <li>min_sample_cov</li>
+        <li>min_cov</li>
+        <li>min_cov_pos</li>
+        <li>sd_cov</li>
+        <li>FL</li>
+        <li>n_indels</li>
+        <li>n_indels_junc</li>
+        <li>bite</li>
+        <li>iso_exp</li>
+        <li>gene_exp</li>
+        <li>ratio_exp</li>
+        <li>FSM_class</li>
+        <li>coding</li>
+        <li>ORF_length</li>
+        <li>CDS_length</li>
+        <li>CDS_start</li>
+        <li>CDS_end</li>
+        <li>CDS_genomic_start</li>
+        <li>CDS_genomic_end</li>
+        <li>predicted_NMD</li>
+        <li>perc_A_downstream_TTS</li>
+        <li>seq_A_downstream_TTS</li>
+        <li>dist_to_CAGE_peak</li>
+        <li>within_CAGE_peak</li>
+        <li>dist_to_polyA_site</li>
+        <li>within_polyA_site</li>
+        <li>polyA_motif</li>
+        <li>polyA_dist</li>
+        <li>polyA_motif_found</li>
+        <li>ORF_seq</li>
+        <li>ratio_TSS</li>
+    </ul>
+    
+    <h2>Classification Data</h2>
+    <p>The original SQANTI3 classification file (hg38_classification.txt) is included for reference and filtering.</p>
+    <p>This file contains all the detailed classification information for each transcript.</p>
+    
+    <h2>Usage Instructions</h2>
+    <p>To use this hub in the UCSC Genome Browser:</p>
+    <ol>
+        <li>Upload all files in this directory to a web-accessible location</li>
+        <li>In the UCSC Genome Browser, go to My Data → Track Hubs</li>
+        <li>Enter the URL to your hub.txt file</li>
+        <li>Select the appropriate genome assembly</li>
+        <li>The SQANTI3 tracks will appear in your track list</li>
+    </ol>
+</body>
+</html>
