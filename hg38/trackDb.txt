@@ -1,8 +1,8 @@
 track hg38_sqanti3
-bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3_enhanced.gp
+bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type genePred
+type bigGenePred
 visibility dense
 color 107,174,214
 priority 1
