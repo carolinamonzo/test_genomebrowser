@@ -34,41 +34,38 @@
     </div>
     
     <div class="filtering">
-        <h3>🔍 Filtering Instructions</h3>
-        <p><strong>This track supports filtering directly in the UCSC Genome Browser using the complete filtering configuration!</strong></p>
+        <h3>🔍 Advanced Filtering Instructions</h3>
+        <p><strong>This track supports advanced filtering directly in the UCSC Genome Browser, similar to the LRGASP hub!</strong></p>
         
-        <h4>Filtering Configuration:</h4>
-        <ul>
-            <li><strong>filterValues:</strong> Defines the available filter values for each classification field</li>
-            <li><strong>filterType:</strong> Set to "values" for discrete value filtering</li>
-            <li><strong>filterBy:</strong> Specifies which fields can be used for filtering</li>
-        </ul>
-        
-        <h4>How to Filter:</h4>
+        <h4>How to Use Advanced Filters:</h4>
         <ol>
             <li><strong>Right-click on the track name</strong> in the UCSC Genome Browser</li>
-            <li>Select <strong>"Filter by name"</strong> or <strong>"Filter by value"</strong></li>
-            <li>Enter search terms to filter transcripts</li>
-            <li>The browser will use the configured <code>filterBy</code> fields for searching</li>
+            <li>Select <strong>"Configure"</strong> to access filter options</li>
+            <li>Use the <strong>filter panels</strong> to select specific values</li>
+            <li>Or use <strong>"Filter by name"</strong> for text-based searching</li>
         </ol>
         
-        <h4>Available Filter Values:</h4>
+        <h4>Available Filter Categories:</h4>
+        <p><strong>ALL 48 columns from the SQANTI3 classification file are now available for filtering!</strong></p>
         <ul>
-            <li><strong>Structural Categories:</strong> <code class="code">intergenic</code>, <code class="code">novelGene</code>, <code class="code">novel_in_catalog</code>, <code class="code">novel_not_in_catalog</code>, <code class="code">antisense</code>, <code class="code">sense_intronic</code>, <code class="code">fusion</code>, <code class="code">genic</code></li>
-            <li><strong>Coding Status:</strong> <code class="code">coding</code>, <code class="code">non_coding</code></li>
-            <li><strong>FSM Classes:</strong> <code class="code">A</code>, <code class="code">B</code>, <code class="code">C</code>, <code class="code">D</code></li>
-            <li><strong>Subcategories:</strong> <code class="code">mono-exon</code>, <code class="code">multi-exon</code>, <code class="code">at_least_one_novel_splicesite</code></li>
+            <li><strong>Structural Category:</strong> Filter by transcript classification (intergenic, novelGene, novel_in_catalog, etc.)</li>
+            <li><strong>Associated Gene:</strong> Filter by gene names or novel gene identifiers</li>
+            <li><strong>Subcategory:</strong> Filter by exon structure (mono-exon, multi-exon, novel splice sites)</li>
+            <li><strong>Coding Status:</strong> Filter by coding vs non-coding transcripts</li>
+            <li><strong>FSM Class:</strong> Filter by Full Splice Match classification (A, B, C, D)</li>
+            <li><strong>RTS Stage:</strong> Filter by RTS stage information</li>
+            <li><strong>Plus 42+ additional columns:</strong> Including quality metrics, length statistics, splice site information, and more!</li>
         </ul>
         
-        <h4>Example Filter Queries:</h4>
+        <h4>Filter Features:</h4>
         <ul>
-            <li>Type <code class="code">intergenic</code> to show only intergenic transcripts</li>
-            <li>Type <code class="code">coding</code> to show only coding transcripts</li>
-            <li>Type <code class="code">A</code> to show only FSM class A transcripts</li>
-            <li>Type <code class="code">mono-exon</code> to show only mono-exon transcripts</li>
+            <li><strong>Range-based filtering</strong> for numeric values</li>
+            <li><strong>Text-based filtering</strong> with regex support</li>
+            <li><strong>Multiple filter combinations</strong> for complex queries</li>
+            <li><strong>Search indexing</strong> for fast transcript name lookups</li>
         </ul>
         
-        <p><em>💡 Tip: The classification data is embedded in the transcript names, so you can search for any classification value directly in the UCSC filter interface!</em></p>
+        <p><em>💡 This hub now implements the same advanced filtering capabilities as professional hubs like LRGASP!</em></p>
     </div>
     
     <h2>🎨 Color Coding</h2>
@@ -86,7 +83,7 @@
     </div>
     
     <h2>📊 Track Information</h2>
-    <p>This track contains <strong>3,925 transcripts</strong> from the SQANTI3 analysis with the following data embedded:</p>
+    <p>This track contains transcripts from the SQANTI3 analysis with the following data embedded:</p>
     <ul>
         <li><strong>Transcript coordinates</strong> from the corrected GTF file</li>
         <li><strong>Structural classification</strong> (intergenic, novelGene, etc.)</li>
@@ -101,11 +98,10 @@
     <p>The classification data comes from the SQANTI3 <code>*_classification.txt</code> file, which contains detailed quality metrics and classification for each transcript.</p>
     
     <h2>🚀 Usage Instructions</h2>
-    <p>To use this hub in the UCSC Genome Browser:</p>
     <ol>
-        <li>Upload all files in this directory to a web-accessible location</li>
-        <li>In the UCSC Genome Browser, go to <strong>My Data → Track Hubs</strong></li>
-        <li>Enter the URL to your <code>hub.txt</code> file</li>
+        <li>Upload the hub files to your web-accessible location</li>
+        <li>In the UCSC Genome Browser, go to My Data → Track Hubs</li>
+        <li>Enter the URL to your hub.txt file</li>
         <li>Select the appropriate genome assembly</li>
         <li>The SQANTI3 tracks will appear in your track list</li>
         <li>Use the filtering capabilities to explore specific transcript categories</li>

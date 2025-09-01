@@ -1,13 +1,108 @@
 track hg38_sqanti3
-bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3_enhanced.gp
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type genePred
+type bigBed
 visibility dense
 color 107,174,214
 priority 1
-metadataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_classification.txt
-html https://github.com/carolinamonzo/test_genomebrowser/raw/main/test_debug_hg38_SQANTI3_Hub.html
-filterValues structural_category associated_gene subcategory coding FSM_class RTS_stage
-filterType values
-filterBy structural_category associated_gene subcategory coding FSM_class RTS_stage
+metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/hg38_classification.txt
+html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/test_debug_hg38_SQANTI3_Hub.html
+searchIndex name
+filterValues isoform chrom strand length exons structural_category associated_gene associated_transcript ref_length ref_exons diff_to_TSS diff_to_TTS diff_to_gene_TSS diff_to_gene_TTS subcategory RTS_stage all_canonical min_sample_cov min_cov min_cov_pos sd_cov FL n_indels n_indels_junc bite iso_exp gene_exp ratio_exp FSM_class coding ORF_length CDS_length CDS_start CDS_end CDS_genomic_start CDS_genomic_end predicted_NMD perc_A_downstream_TTS seq_A_downstream_TTS dist_to_CAGE_peak within_CAGE_peak dist_to_polyA_site within_polyA_site polyA_motif polyA_dist polyA_motif_found ORF_seq ratio_TSS
+filterByRange isoform on
+filterLabel isoform Isoform
+filterByRange chrom on
+filterLabel chrom Chrom
+filterByRange strand on
+filterLabel strand Strand
+filterByRange length on
+filterLabel length Length
+filterByRange exons on
+filterLabel exons Exons
+filterByRange structural_category on
+filterLabel structural_category Structural Category
+filterByRange associated_gene on
+filterLabel associated_gene Associated Gene
+filterByRange associated_transcript on
+filterLabel associated_transcript Associated Transcript
+filterByRange ref_length on
+filterLabel ref_length Ref Length
+filterByRange ref_exons on
+filterLabel ref_exons Ref Exons
+filterByRange diff_to_TSS on
+filterLabel diff_to_TSS Diff To Tss
+filterByRange diff_to_TTS on
+filterLabel diff_to_TTS Diff To Tts
+filterByRange diff_to_gene_TSS on
+filterLabel diff_to_gene_TSS Diff To Gene Tss
+filterByRange diff_to_gene_TTS on
+filterLabel diff_to_gene_TTS Diff To Gene Tts
+filterByRange subcategory on
+filterLabel subcategory Subcategory
+filterByRange RTS_stage on
+filterLabel RTS_stage Rts Stage
+filterByRange all_canonical on
+filterLabel all_canonical All Canonical
+filterByRange min_sample_cov on
+filterLabel min_sample_cov Min Sample Cov
+filterByRange min_cov on
+filterLabel min_cov Min Cov
+filterByRange min_cov_pos on
+filterLabel min_cov_pos Min Cov Pos
+filterByRange sd_cov on
+filterLabel sd_cov Sd Cov
+filterByRange FL on
+filterLabel FL Fl
+filterByRange n_indels on
+filterLabel n_indels N Indels
+filterByRange n_indels_junc on
+filterLabel n_indels_junc N Indels Junc
+filterByRange bite on
+filterLabel bite Bite
+filterByRange iso_exp on
+filterLabel iso_exp Iso Exp
+filterByRange gene_exp on
+filterLabel gene_exp Gene Exp
+filterByRange ratio_exp on
+filterLabel ratio_exp Ratio Exp
+filterByRange FSM_class on
+filterLabel FSM_class Fsm Class
+filterByRange coding on
+filterLabel coding Coding
+filterByRange ORF_length on
+filterLabel ORF_length Orf Length
+filterByRange CDS_length on
+filterLabel CDS_length Cds Length
+filterByRange CDS_start on
+filterLabel CDS_start Cds Start
+filterByRange CDS_end on
+filterLabel CDS_end Cds End
+filterByRange CDS_genomic_start on
+filterLabel CDS_genomic_start Cds Genomic Start
+filterByRange CDS_genomic_end on
+filterLabel CDS_genomic_end Cds Genomic End
+filterByRange predicted_NMD on
+filterLabel predicted_NMD Predicted Nmd
+filterByRange perc_A_downstream_TTS on
+filterLabel perc_A_downstream_TTS Perc A Downstream Tts
+filterByRange seq_A_downstream_TTS on
+filterLabel seq_A_downstream_TTS Seq A Downstream Tts
+filterByRange dist_to_CAGE_peak on
+filterLabel dist_to_CAGE_peak Dist To Cage Peak
+filterByRange within_CAGE_peak on
+filterLabel within_CAGE_peak Within Cage Peak
+filterByRange dist_to_polyA_site on
+filterLabel dist_to_polyA_site Dist To Polya Site
+filterByRange within_polyA_site on
+filterLabel within_polyA_site Within Polya Site
+filterByRange polyA_motif on
+filterLabel polyA_motif Polya Motif
+filterByRange polyA_dist on
+filterLabel polyA_dist Polya Dist
+filterByRange polyA_motif_found on
+filterLabel polyA_motif_found Polya Motif Found
+filterByRange ORF_seq on
+filterLabel ORF_seq Orf Seq
+filterByRange ratio_TSS on
+filterLabel ratio_TSS Ratio Tss
