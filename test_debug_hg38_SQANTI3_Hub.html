@@ -11,99 +11,94 @@
         ul { list-style-type: disc; margin-left: 20px; }
         ol { list-style-type: decimal; margin-left: 20px; }
         code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
-        .filter-section { background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .filter-control { margin: 10px 0; }
-        .filter-control label { display: inline-block; width: 150px; font-weight: bold; }
-        .filter-control select, .filter-control input { padding: 5px; border: 1px solid #ccc; border-radius: 4px; width: 200px; }
-        .filter-button { background-color: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 10px 5px; }
-        .filter-button:hover { background-color: #005a87; }
+        .filtering { margin: 20px 0; padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px; }
         .color-box { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border: 1px solid #ccc; }
         .legend { margin: 20px 0; }
         .legend-item { margin: 10px 0; }
-        .score-info { background-color: #e7f3ff; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .enhanced-names { background-color: #e7f3ff; padding: 15px; border-radius: 6px; margin: 20px 0; }
     </style>
 </head>
 <body>
     <h1>test_debug_hg38_SQANTI3_Hub</h1>
-    <p>This hub displays SQANTI3 transcriptome analysis results for the hg38 genome assembly.</p>
+    <p>This track displays SQANTI3 transcriptome analysis results with embedded classification data for filtering.</p>
     
-    <div class="score-info">
-        <h3>🎯 Score-Based Filtering</h3>
-        <p><strong>Transcripts are encoded with classification data in the score field:</strong></p>
-        <ul>
-            <li><strong>950-975:</strong> Full-splice Match (FSM) + coding bonus</li>
-            <li><strong>850-875:</strong> Incomplete-splice Match (ISM) + coding bonus</li>
-            <li><strong>750-775:</strong> Novel In Catalog (NIC) + coding bonus</li>
-            <li><strong>650-675:</strong> Novel Not In Catalog (NNC) + coding bonus</li>
-            <li><strong>550-575:</strong> Genic + coding bonus</li>
-            <li><strong>450-475:</strong> Antisense + coding bonus</li>
-            <li><strong>350-375:</strong> Fusion + coding bonus</li>
-            <li><strong>250-275:</strong> Intergenic + coding bonus</li>
-            <li><strong>150-175:</strong> Genic Intron + coding bonus</li>
-        </ul>
-        <p><em>Note: Add 25 points for coding transcripts, 0 for non-coding</em></p>
+    <div class="enhanced-names">
+        <h3>🔍 Enhanced Names for Filtering</h3>
+        <p><strong>Transcript names contain embedded classification data in this format:</strong></p>
+        <code>transcript_id|structural_category|associated_gene|subcategory|coding|FSM_class|RTS_stage</code>
+        
+        <h4>Example:</h4>
+        <code>PB.118859.1|intergenic|novelGene_124|mono-exon|non_coding|A|False</code>
+        
+        <p><em>This allows you to filter transcripts directly in the UCSC Genome Browser using any classification value!</em></p>
     </div>
     
-    <div class="filter-section">
-        <h2>🔍 Interactive Filtering Interface</h2>
-        <p>Use the UCSC Genome Browser's built-in filtering capabilities:</p>
+    <div class="filtering">
+        <h3>🔍 Filtering Instructions</h3>
+        <p><strong>This track supports filtering directly in the UCSC Genome Browser using the complete filtering configuration!</strong></p>
         
-        <div class="filter-control">
-            <label>Filter by Score Range:</label>
-            <select id="scoreFilter">
-                <option value="">All Scores</option>
-                <option value="950-975">Full-splice Match (950-975)</option>
-                <option value="850-875">Incomplete-splice Match (850-875)</option>
-                <option value="750-775">Novel In Catalog (750-775)</option>
-                <option value="650-675">Novel Not In Catalog (650-675)</option>
-                <option value="550-575">Genic (550-575)</option>
-                <option value="450-475">Antisense (450-475)</option>
-                <option value="650-675">Fusion (350-375)</option>
-                <option value="250-275">Intergenic (250-275)</option>
-                <option value="150-175">Genic Intron (150-175)</option>
-            </select>
-        </div>
+        <h4>Filtering Configuration:</h4>
+        <ul>
+            <li><strong>filterValues:</strong> Defines the available filter values for each classification field</li>
+            <li><strong>filterType:</strong> Set to "values" for discrete value filtering</li>
+            <li><strong>filterBy:</strong> Specifies which fields can be used for filtering</li>
+        </ul>
         
-        <div class="filter-control">
-            <label>Filter by Coding Status:</label>
-            <select id="codingFilter">
-                <option value="">All Transcripts</option>
-                <option value="coding">Coding Only (scores ending in 25)</option>
-                <option value="noncoding">Non-coding Only (scores ending in 0)</option>
-            </select>
-        </div>
+        <h4>How to Filter:</h4>
+        <ol>
+            <li><strong>Right-click on the track name</strong> in the UCSC Genome Browser</li>
+            <li>Select <strong>"Filter by name"</strong> or <strong>"Filter by value"</strong></li>
+            <li>Enter search terms to filter transcripts</li>
+            <li>The browser will use the configured <code>filterBy</code> fields for searching</li>
+        </ol>
         
-        <button class="filter-button" onclick="applyFilters()">Apply Filters</button>
-        <button class="filter-button" onclick="clearFilters()">Clear Filters</button>
+        <h4>Available Filter Values:</h4>
+        <ul>
+            <li><strong>Structural Categories:</strong> <code class="code">intergenic</code>, <code class="code">novelGene</code>, <code class="code">novel_in_catalog</code>, <code class="code">novel_not_in_catalog</code>, <code class="code">antisense</code>, <code class="code">sense_intronic</code>, <code class="code">fusion</code>, <code class="code">genic</code></li>
+            <li><strong>Coding Status:</strong> <code class="code">coding</code>, <code class="code">non_coding</code></li>
+            <li><strong>FSM Classes:</strong> <code class="code">A</code>, <code class="code">B</code>, <code class="code">C</code>, <code class="code">D</code></li>
+            <li><strong>Subcategories:</strong> <code class="code">mono-exon</code>, <code class="code">multi-exon</code>, <code class="code">at_least_one_novel_splicesite</code></li>
+        </ul>
         
-        <div id="filterInstructions" style="margin-top: 20px; padding: 15px; background-color: #fff3cd; border-radius: 6px;">
-            <h4>📋 How to Use Filters in UCSC Genome Browser:</h4>
-            <ol>
-                <li>In the UCSC Genome Browser, right-click on the SQANTI3 track</li>
-                <li>Select "Filter" from the context menu</li>
-                <li>Use the score-based filtering options above</li>
-                <li>You can also filter by clicking on individual transcripts to see their details</li>
-            </ol>
-        </div>
+        <h4>Example Filter Queries:</h4>
+        <ul>
+            <li>Type <code class="code">intergenic</code> to show only intergenic transcripts</li>
+            <li>Type <code class="code">coding</code> to show only coding transcripts</li>
+            <li>Type <code class="code">A</code> to show only FSM class A transcripts</li>
+            <li>Type <code class="code">mono-exon</code> to show only mono-exon transcripts</li>
+        </ul>
+        
+        <p><em>💡 Tip: The classification data is embedded in the transcript names, so you can search for any classification value directly in the UCSC filter interface!</em></p>
     </div>
     
     <h2>🎨 Color Coding</h2>
     <p>Transcripts are colored by their <code>structural_category</code>, using the same color scheme as SQANTI3:</p>
     <div class="legend">
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(107,174,214);"></span>Full-splice Match (FSM)</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(252,141,89);"></span>Incomplete-splice Match (ISM)</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(120,198,121);"></span>Novel In Catalog (NIC)</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(238,106,80);"></span>Novel Not In Catalog (NNC)</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(150,150,150);"></span>Genic</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(102,194,164);"></span>Antisense</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(218,165,32);"></span>Fusion</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(233,150,122);"></span>Intergenic</div>
-        <div class="legend-item"><span class="color-box" style="background-color:rgb(65,182,196);"></span>Genic Intron</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(233,150,122);"></span>intergenic</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(107,174,214);"></span>novelGene</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(49,130,189);"></span>novel_in_catalog</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(158,202,225);"></span>novel_not_in_catalog</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(222,235,247);"></span>antisense</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(247,247,247);"></span>sense_intronic</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(209,229,240);"></span>fusion</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(253,224,239);"></span>genic</div>
+        <div class="legend-item"><span class="color-box" style="background-color:rgb(255,255,255);"></span>other</div>
     </div>
     
-    <h2>📊 Classification Data</h2>
-    <p>The original SQANTI3 classification file (hg38_classification.txt) is included for reference and detailed analysis.</p>
-    <p>This file contains all the detailed classification information for each transcript.</p>
+    <h2>📊 Track Information</h2>
+    <p>This track contains <strong>3,925 transcripts</strong> from the SQANTI3 analysis with the following data embedded:</p>
+    <ul>
+        <li><strong>Transcript coordinates</strong> from the corrected GTF file</li>
+        <li><strong>Structural classification</strong> (intergenic, novelGene, etc.)</li>
+        <li><strong>Associated gene names</strong></li>
+        <li><strong>Subcategory information</strong> (mono-exon, multi-exon, etc.)</li>
+        <li><strong>Coding status</strong> (coding/non-coding)</li>
+        <li><strong>FSM classification</strong> (A, B, C, D)</li>
+        <li><strong>RTS stage</strong> information</li>
+    </ul>
+    
+    <h2>📁 Data Source</h2>
+    <p>The classification data comes from the SQANTI3 <code>*_classification.txt</code> file, which contains detailed quality metrics and classification for each transcript.</p>
     
     <h2>🚀 Usage Instructions</h2>
     <p>To use this hub in the UCSC Genome Browser:</p>
@@ -113,40 +108,7 @@
         <li>Enter the URL to your <code>hub.txt</code> file</li>
         <li>Select the appropriate genome assembly</li>
         <li>The SQANTI3 tracks will appear in your track list</li>
-        <li>Use the filtering interface above to explore specific transcript categories</li>
+        <li>Use the filtering capabilities to explore specific transcript categories</li>
     </ol>
-    
-    <script>
-        function applyFilters() {
-            const scoreFilter = document.getElementById('scoreFilter').value;
-            const codingFilter = document.getElementById('codingFilter').value;
-            
-            let instructions = '<h4>📋 Filter Instructions for UCSC Genome Browser:</h4><ol>';
-            
-            if (scoreFilter) {
-                instructions += '<li>Right-click on the SQANTI3 track and select "Filter"</li>';
-                instructions += '<li>Use score range: ' + scoreFilter + '</li>';
-            }
-            
-            if (codingFilter) {
-                instructions += '<li>Filter by coding status: ' + codingFilter + '</li>';
-            }
-            
-            instructions += '<li>Click "Apply" to see filtered results</li></ol>';
-            
-            document.getElementById('filterInstructions').innerHTML = instructions;
-        }
-        
-        function clearFilters() {
-            document.getElementById('scoreFilter').value = '';
-            document.getElementById('codingFilter').value = '';
-            document.getElementById('filterInstructions').innerHTML = 
-                '<h4>📋 How to Use Filters in UCSC Genome Browser:</h4><ol>' +
-                '<li>In the UCSC Genome Browser, right-click on the SQANTI3 track</li>' +
-                '<li>Select "Filter" from the context menu</li>' +
-                '<li>Use the score-based filtering options above</li>' +
-                '<li>You can also filter by clicking on individual transcripts to see their details</li></ol>';
-        }
-    </script>
 </body>
 </html>
