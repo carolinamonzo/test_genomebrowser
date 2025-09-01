@@ -9,10 +9,3 @@ priority 1
 metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/hg38_classification.txt
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/test_debug_hg38_SQANTI3_Hub.html
 searchIndex name
-filterValues chrom strand score
-filterByRange chrom on
-filterLabel chrom Chrom
-filterByRange strand on
-filterLabel strand Strand
-filterByRange score on
-filterLabel score Score
