@@ -1,11 +1,11 @@
 track hg38_sqanti3
-bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3.bb
+bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3_enhanced.gp
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type bigBed 12
-itemRgb On
+type genePred
 visibility dense
 color 107,174,214
 priority 1
 metadataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_classification.txt
 html https://github.com/carolinamonzo/test_genomebrowser/raw/main/test_debug_hg38_SQANTI3_Hub.html
+filterValues structural_category associated_gene subcategory coding FSM_class RTS_stage
