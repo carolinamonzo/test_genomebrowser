@@ -1,13 +1,13 @@
 track hg38_sqanti3
-bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/hg38_sqanti3.bb
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
 type bigBed
 visibility dense
 color 107,174,214
 priority 1
-metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/hg38_classification.txt
-html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/main/test_debug_hg38_SQANTI3_Hub.html
+metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/hg38_classification.txt
+html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/test_debug_hg38_SQANTI3_Hub.html
 searchIndex name
 filterValues isoform chrom strand length exons structural_category associated_gene associated_transcript ref_length ref_exons diff_to_TSS diff_to_TTS diff_to_gene_TSS diff_to_gene_TTS subcategory RTS_stage all_canonical min_sample_cov min_cov min_cov_pos sd_cov FL n_indels n_indels_junc bite iso_exp gene_exp ratio_exp FSM_class coding ORF_length CDS_length CDS_start CDS_end CDS_genomic_start CDS_genomic_end predicted_NMD perc_A_downstream_TTS seq_A_downstream_TTS dist_to_CAGE_peak within_CAGE_peak dist_to_polyA_site within_polyA_site polyA_motif polyA_dist polyA_motif_found ORF_seq ratio_TSS
 filterByRange isoform on
