@@ -1,4 +1,4 @@
-track hg38_sqanti3
+track test_hg38_SQANTI_Hub
 bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/refs/heads/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
