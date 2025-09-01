@@ -34,10 +34,10 @@
     </div>
     
     <div class="filtering">
-        <h3>🔍 Advanced Filtering Instructions</h3>
-        <p><strong>This track supports advanced filtering directly in the UCSC Genome Browser, similar to the LRGASP hub!</strong></p>
+        <h3>🔍 SQANTI3 Filtering Instructions</h3>
+        <p><strong>This track supports essential filtering for SQANTI3 transcriptome analysis in the UCSC Genome Browser!</strong></p>
         
-        <h4>How to Use Advanced Filters:</h4>
+        <h4>How to Use Filters:</h4>
         <ol>
             <li><strong>Right-click on the track name</strong> in the UCSC Genome Browser</li>
             <li>Select <strong>"Configure"</strong> to access filter options</li>
@@ -46,26 +46,25 @@
         </ol>
         
         <h4>Available Filter Categories:</h4>
-        <p><strong>ALL 48 columns from the SQANTI3 classification file are now available for filtering!</strong></p>
+        <p><strong>ALL 48 SQANTI3 classification columns are available for filtering!</strong></p>
         <ul>
-            <li><strong>Structural Category:</strong> Filter by transcript classification (intergenic, novelGene, novel_in_catalog, etc.)</li>
-            <li><strong>Associated Gene:</strong> Filter by gene names or novel gene identifiers</li>
-            <li><strong>Subcategory:</strong> Filter by exon structure (mono-exon, multi-exon, novel splice sites)</li>
-            <li><strong>Coding Status:</strong> Filter by coding vs non-coding transcripts</li>
-            <li><strong>FSM Class:</strong> Filter by Full Splice Match classification (A, B, C, D)</li>
-            <li><strong>RTS Stage:</strong> Filter by RTS stage information</li>
-            <li><strong>Plus 42+ additional columns:</strong> Including quality metrics, length statistics, splice site information, and more!</li>
+            <li><strong>Core Classification:</strong> structural_category, associated_gene, subcategory, coding, FSM_class, RTS_stage</li>
+            <li><strong>Structure & Length:</strong> length, exons, intron_count, diff_to_TSS, diff_to_TTS</li>
+            <li><strong>Coverage & Quality:</strong> min_cov, min_cov_pos, sd_cov, FL, all_canonical</li>
+            <li><strong>Expression Data:</strong> iso_exp, gene_exp, ratio_exp, bite</li>
+            <li><strong>Sequence Features:</strong> ORF_length, CDS_length, polyA_motif, predicted_NMD</li>
+            <li><strong>Plus 20+ additional columns:</strong> Including all SQANTI3 quality metrics and annotations</li>
         </ul>
         
         <h4>Filter Features:</h4>
         <ul>
-            <li><strong>Range-based filtering</strong> for numeric values</li>
-            <li><strong>Text-based filtering</strong> with regex support</li>
+            <li><strong>Range-based filtering</strong> for numeric values (length, coverage, expression)</li>
+            <li><strong>Category-based filtering</strong> for classification data</li>
             <li><strong>Multiple filter combinations</strong> for complex queries</li>
             <li><strong>Search indexing</strong> for fast transcript name lookups</li>
         </ul>
         
-        <p><em>💡 This hub now implements the same advanced filtering capabilities as professional hubs like LRGASP!</em></p>
+        <p><em>💡 Focused on essential SQANTI3 metrics for efficient transcriptome analysis!</em></p>
     </div>
     
     <h2>🎨 Color Coding</h2>
