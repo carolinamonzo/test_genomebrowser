@@ -9,9 +9,5 @@ priority 1
 metadataUrl hg38_classification.txt
 html test_debug_hg38_SQANTI3_Hub.html
 searchIndex name
-searchIndex name
 filterValues name
 filterLabel.name Transcript classification (use search to filter by category, length, etc.)
-html test_debug/test_debug_hg38_SQANTI3_Hub.html
-compositeTrack on
-allButtonPair on
