@@ -1,11 +1,33 @@
 track hg38_sqanti3
-bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/hg38_sqanti3.bb
+bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
 type bigBed
 visibility dense
 color 107,174,214
 priority 1
-metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/hg38_classification.txt
-html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/refs/heads/main/test_debug_hg38_SQANTI3_Hub.html
+metadataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_classification.txt
+html https://github.com/carolinamonzo/test_genomebrowser/raw/main/test_debug_hg38_SQANTI3_Hub.html
 searchIndex name
+filterByRange.length on
+filterLabel.length Transcript length
+filterLimits.length 0:100000
+filterByRange.exons on
+filterLabel.exons Number of exons
+filterLimits.exons 0:100
+filterByRange.minCov on
+filterLabel.minCov Minimum coverage
+filterLimits.minCov 0:1000
+filterByRange.isoExp on
+filterLabel.isoExp Isoform expression
+filterLimits.isoExp 0:1000000
+filter.structCategory 0:9
+filterLabel.structCategory Structural category (0=FSM,1=ISM,2=NIC,3=NNC,4=genic,5=antisense,6=fusion,7=intergenic,8=genic_intron)
+filter.subcategory 0:6
+filterLabel.subcategory Subcategory (0=mono-exon,1=multi-exon,2=novel,3=known,4=canonical,5=non-canonical)
+filter.codingStatus 0:4
+filterLabel.codingStatus Coding status (0=coding,1=non_coding,2=partial_coding,3=pseudo)
+filter.fsmClass 0:4
+filterLabel.fsmClass FSM class (0=none,1=A,2=B,3=C,4=D)
+compositeTrack on
+allButtonPair on
