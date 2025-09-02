@@ -1,15 +1,17 @@
 track hg38_sqanti3
-bigDataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_sqanti3.bb
+bigDataUrl hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
 type bigBed
 visibility dense
 color 107,174,214
 priority 1
-metadataUrl https://github.com/carolinamonzo/test_genomebrowser/raw/main/hg38_classification.txt
-html https://github.com/carolinamonzo/test_genomebrowser/raw/main/test_debug_hg38_SQANTI3_Hub.html
+metadataUrl hg38_classification.txt
+html test_debug_hg38_SQANTI3_Hub.html
+searchIndex name
 searchIndex name
 filterValues name
-filterLabel.name Transcript classification (encoded: struct|subcat|coding|fsm|length|exons|coverage|expression)
+filterLabel.name Transcript classification (use search to filter by category, length, etc.)
+html test_debug/test_debug_hg38_SQANTI3_Hub.html
 compositeTrack on
 allButtonPair on
