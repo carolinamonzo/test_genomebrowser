@@ -1,0 +1,20 @@
+track hg38_sqanti3
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3.bb
+shortLabel SQANTI3 Transcripts
+longLabel SQANTI3 Transcriptome Analysis Results
+type bigBed 12 + 8
+visibility dense
+group transcripts
+itemRgb on
+color 107,174,214
+priority 1
+html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
+searchIndex name
+filter.structCode 0,1,2,3,4,5,6,7,8
+filter.subcatCode 0,1,2,3,4,5
+filter.codingCode 0,1,2,3
+filter.fsmCode 0,1,2,3,4
+filterByRange.length 0:100000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000000
