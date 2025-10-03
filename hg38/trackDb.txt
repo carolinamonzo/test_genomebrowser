@@ -10,6 +10,8 @@ color 107,174,214
 priority 1
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
 searchIndex name
+filterByRange.exons 0:100
+filterLabel.exons Number of exons
 
 track hg38_sqanti3_full-splice_match
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_full-splice_match.bb
