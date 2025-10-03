@@ -11,8 +11,6 @@ priority 1
 metadataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_classification.txt
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
 searchIndex name
-filterValues name
-filterLabel.name Transcript classification (use search to filter by category, length, etc.)
 filter structCode=0,1,2,3,4,5,6,7,8
 filter subcatCode=0,1,2,3,4,5
 filter codingCode=0,1,2,3
