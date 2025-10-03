@@ -12,6 +12,7 @@ html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg3
 searchIndex name
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
+searchTrix trix.ix
 
 track hg38_sqanti3_full-splice_match
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_full-splice_match.bb
