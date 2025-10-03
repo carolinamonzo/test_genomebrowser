@@ -8,6 +8,9 @@ group transcripts
 itemRgb on
 color 107,174,214
 priority 1
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
 searchIndex name
 
@@ -19,6 +22,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_incomplete-splice_match
@@ -29,6 +35,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_novel_in_catalog
@@ -39,6 +48,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_novel_not_in_catalog
@@ -49,6 +61,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_genic
@@ -59,6 +74,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_antisense
@@ -69,6 +87,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_fusion
@@ -79,6 +100,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_intergenic
@@ -89,6 +113,9 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
 
 track hg38_sqanti3_genic_intron
@@ -99,4 +126,7 @@ type bigBed 12
 visibility hide
 group transcripts
 itemRgb on
+useScore 1
+scoreFilter on
+scoreFilterLimits 0 100
 priority 3
