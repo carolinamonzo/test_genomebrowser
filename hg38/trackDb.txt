@@ -10,11 +10,93 @@ color 107,174,214
 priority 1
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
 searchIndex name
-filter.structCode 0,1,2,3,4,5,6,7,8
-filter.subcatCode 0,1,2,3,4,5
-filter.codingCode 0,1,2,3
-filter.fsmCode 0,1,2,3,4
-filterByRange.length 0:100000
-filterByRange.exons 0:100
-filterByRange.coverage 0:1000
-filterByRange.expression 0:1000000
+
+track hg38_sqanti3_full-splice_match
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_full-splice_match.bb
+shortLabel SQANTI3 full-splice_match
+longLabel SQANTI3 full-splice_match transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_incomplete-splice_match
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_incomplete-splice_match.bb
+shortLabel SQANTI3 incomplete-splice_match
+longLabel SQANTI3 incomplete-splice_match transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_novel_in_catalog
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_in_catalog.bb
+shortLabel SQANTI3 novel_in_catalog
+longLabel SQANTI3 novel_in_catalog transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_novel_not_in_catalog
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_not_in_catalog.bb
+shortLabel SQANTI3 novel_not_in_catalog
+longLabel SQANTI3 novel_not_in_catalog transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_genic
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic.bb
+shortLabel SQANTI3 genic
+longLabel SQANTI3 genic transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_antisense
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_antisense.bb
+shortLabel SQANTI3 antisense
+longLabel SQANTI3 antisense transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_fusion
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_fusion.bb
+shortLabel SQANTI3 fusion
+longLabel SQANTI3 fusion transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_intergenic
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_intergenic.bb
+shortLabel SQANTI3 intergenic
+longLabel SQANTI3 intergenic transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
+
+track hg38_sqanti3_genic_intron
+bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic_intron.bb
+shortLabel SQANTI3 genic_intron
+longLabel SQANTI3 genic_intron transcripts
+type bigBed
+visibility hide
+group transcripts
+itemRgb on
+priority 3
