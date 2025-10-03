@@ -4,10 +4,12 @@ shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
 type bigBed
 visibility dense
+group transcripts
+itemRgb on
 color 107,174,214
 priority 1
 metadataUrl hg38_classification.txt
-html test_debug_hg38_SQANTI3_Hub.html
+html example_output_hg38_SQANTI3_Hub.html
 searchIndex name
 filterValues name
 filterLabel.name Transcript classification (use search to filter by category, length, etc.)
