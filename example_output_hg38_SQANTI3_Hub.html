@@ -18,36 +18,18 @@
     <p>This hub displays SQANTI3 transcriptome analysis results for the hg38 genome assembly.</p>
     
     <div class="info-box">
-        <h3>🔍 Advanced Filtering with Smart Name Encoding</h3>
-        <p><strong>This hub uses standard bigBed format with comprehensive data encoding in the name field:</strong></p>
+        <h3>🔍 Advanced Filtering with bigBed 12+8</h3>
+        <p><strong>This hub uses bigBed 12+8 with an autoSql schema, enabling per-field filters and ranges:</strong></p>
         <ul>
-            <li><strong>Structural Category:</strong> Filter by FSM, ISM, NIC, NNC, genic, antisense, fusion, intergenic, genic_intron</li>
-            <li><strong>Subcategory:</strong> Filter by mono-exon, multi-exon, novel, known, canonical, non-canonical</li>
-            <li><strong>Coding Status:</strong> Filter by coding, non_coding, partial_coding, pseudo</li>
-            <li><strong>FSM Class:</strong> Filter by A, B, C, D</li>
-            <li><strong>Length:</strong> Range-based filtering for transcript length (L value)</li>
-            <li><strong>Coverage:</strong> Range-based filtering for minimum coverage (C value)</li>
-            <li><strong>Expression:</strong> Range-based filtering for isoform expression (X value)</li>
+            <li><strong>Structural Category:</strong> FSM, ISM, NIC, NNC, genic, antisense, fusion, intergenic, genic_intron</li>
+            <li><strong>Subcategory:</strong> mono-exon, multi-exon, novel, known, canonical, non-canonical</li>
+            <li><strong>Coding Status:</strong> coding, non_coding, partial_coding, pseudo</li>
+            <li><strong>FSM Class:</strong> A, B, C, D</li>
+            <li><strong>Length:</strong> numeric range</li>
+            <li><strong>Coverage:</strong> numeric range</li>
+            <li><strong>Expression:</strong> numeric range</li>
         </ul>
-        <p><em>Use the search box to filter by classification data (e.g., "intergenic", "L>500", "coding")</em></p>
-    </div>
-    
-    <div class="info-box">
-        <h3>🔍 How the Smart Filtering Works</h3>
-        <p><strong>All classification data is encoded in the transcript name field:</strong></p>
-        <p><code>PB.118859.1|intergenic|mono-exon|non_coding|FSM1|L320|E1|Cnan|X80.0265</code></p>
-        <ul>
-            <li><strong>Format:</strong> transcript_id|structural_category|subcategory|coding_status|FSM_class|Llength|Eexons|Ccoverage|Xexpression</li>
-            <li><strong>Search Examples:</strong></li>
-            <ul>
-                <li><code>intergenic</code> - Find all intergenic transcripts</li>
-                <li><code>L>500</code> - Find transcripts longer than 500bp</li>
-                <li><code>E>2</code> - Find multi-exon transcripts</li>
-                <li><code>coding</code> - Find all coding transcripts</li>
-                <li><code>FSM1</code> - Find FSM class A transcripts</li>
-            </ul>
-        </ul>
-        <p><em>This approach provides comprehensive filtering without the complexity of bigBed 12+8 format!</em></p>
+        <p><em>Use the track filters panel to filter by these fields. Text search also works on transcript IDs; Trix (if present) enables richer keyword search.</em></p>
     </div>
     
     <h2>🎨 Color Legend</h2>
