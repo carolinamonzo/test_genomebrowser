@@ -2,7 +2,7 @@
   "genome": "hg38",
   "category": "incomplete-splice_match",
   "record_count": 1138,
-  "generated_at": "2025-10-30T15:16:35.704064Z",
+  "generated_at": "2025-10-30T16:37:54.002247Z",
   "stats": {
     "length": {
       "min": 83,
