@@ -13,10 +13,13 @@
         label { font-weight: 500; margin-bottom: 5px; color: #495057; }
         input, select { padding: 8px 10px; border-radius: 4px; border: 1px solid #ced4da; font-size: 14px; }
         input:focus, select:focus { border-color: #80bdff; outline: 0; box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); }
-        #button-container { grid-column: 1 / -1; display: flex; gap: 10px; }
-        button { padding: 10px 15px; font-size: 15px; font-weight: 500; border-radius: 5px; border: none; cursor: pointer; }
+        #button-container { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; }
+        .button, button { text-decoration: none; display: inline-block; text-align: center; padding: 10px 15px; font-size: 15px; font-weight: 500; border-radius: 5px; border: none; cursor: pointer; }
         #preview-filters { background-color: #17a2b8; color: white; }
         #preview-filters:hover { background-color: #138496; }
+        #toggle-table { background-color: #ffc107; color: #212529; }
+        #toggle-table:hover { background-color: #e0a800; }
+        a.button.disabled { background-color: #6c757d; color: white; cursor: not-allowed; opacity: 0.65; }
         #apply-filters-ucsc { background-color: #28a745; color: white; }
         #apply-filters-ucsc:hover { background-color: #218838; }
         #reset-filters-ucsc { background-color: #dc3545; color: white; }
@@ -474,14 +477,17 @@
             <input type="text" id="gene-search" placeholder="e.g. ENSG...">
         </div>
         <div id="button-container">
-            <button id="preview-filters">Preview Filters Locally</button>
-            <button id="apply-filters-ucsc">Apply to Browser View</button>
-            <button id="reset-filters-ucsc">Reset Browser View</button>
+            <button id="preview-filters">Preview Filters in Table</button>
+            <button id="toggle-table">Show/Hide Transcript Table</button>
+            <a id="apply-filters-ucsc" class="button" href="#" target="_top">Apply to Browser View</a>
+            <a id="reset-filters-ucsc" class="button" href="#" target="_top">Reset Browser View</a>
         </div>
     </div>
     
-    <h3 id="results-count"></h3>
-    <div id="results-container"></div>
+    <h3 id="results-count">Showing 41 transcripts.</h3>
+    <div id="table-wrapper" style="display: none;">
+        <div id="results-container"></div>
+    </div>
 </div>
 
 <script>
@@ -496,65 +502,52 @@
 
     const resultsContainer = document.getElementById('results-container');
     const resultsCount = document.getElementById('results-count');
+    const tableWrapper = document.getElementById('table-wrapper');
+    const applyLink = document.getElementById('apply-filters-ucsc');
+    const resetLink = document.getElementById('reset-filters-ucsc');
 
     const urlParams = new URLSearchParams(window.location.search);
     const hgsid = urlParams.get('hgsid');
     const trackName = `hg38_sqanti3_intergenic`;
     const ucscHost = 'https://genome.ucsc.edu';
+    let tableRendered = false;
 
     function renderTable(data) {
         if (!data || data.length === 0) {
             resultsContainer.innerHTML = '<p>No transcripts match the current filters.</p>';
             return;
         }
-
         let tableHTML = `
             <table>
                 <thead>
                     <tr>
-                        <th>Isoform</th>
-                        <th>Associated Gene</th>
-                        <th>Exons</th>
-                        <th>Length</th>
-                        <th>Diff to TSS</th>
-                        <th>Diff to TTS</th>
-                        <th>Coding</th>
-                        <th>Isoform Exp</th>
+                        <th>Isoform</th><th>Associated Gene</th><th>Exons</th><th>Length</th>
+                        <th>Diff to TSS</th><th>Diff to TTS</th><th>Coding</th><th>Isoform Exp</th>
                     </tr>
                 </thead>
                 <tbody>`;
-        
         data.forEach(t => {
             tableHTML += `
                 <tr>
-                    <td>${t.isoform || 'N/A'}</td>
-                    <td>${t.associated_gene || 'N/A'}</td>
-                    <td>${t.exons !== null ? t.exons : 'N/A'}</td>
-                    <td>${t.length !== null ? t.length : 'N/A'}</td>
-                    <td>${t.diff_to_TSS !== null ? t.diff_to_TSS : 'N/A'}</td>
-                    <td>${t.diff_to_TTS !== null ? t.diff_to_TTS : 'N/A'}</td>
-                    <td>${t.coding || 'N/A'}</td>
-                    <td>${t.iso_exp !== null ? t.iso_exp.toFixed(2) : 'N/A'}</td>
+                    <td>${t.isoform || 'N/A'}</td><td>${t.associated_gene || 'N/A'}</td>
+                    <td>${t.exons !== null ? t.exons : 'N/A'}</td><td>${t.length !== null ? t.length : 'N/A'}</td>
+                    <td>${t.diff_to_TSS !== null ? t.diff_to_TSS : 'N/A'}</td><td>${t.diff_to_TTS !== null ? t.diff_to_TTS : 'N/A'}</td>
+                    <td>${t.coding || 'N/A'}</td><td>${t.iso_exp !== null ? t.iso_exp.toFixed(2) : 'N/A'}</td>
                 </tr>`;
         });
-
         tableHTML += '</tbody></table>';
         resultsContainer.innerHTML = tableHTML;
+        tableRendered = true;
     }
 
     function getFilteredIsoforms() {
         const getVal = (el) => el.value;
         const getInt = (el) => el.value ? parseInt(el.value, 10) : null;
-        
         const filters = {
-            minExons: getInt(controls.minExons),
-            maxExons: getInt(controls.maxExons),
-            minTSS: getInt(controls.minTSS),
-            maxTSS: getInt(controls.maxTSS),
-            coding: getVal(controls.coding),
-            gene: getVal(controls.gene).toLowerCase().trim()
+            minExons: getInt(controls.minExons), maxExons: getInt(controls.maxExons),
+            minTSS: getInt(controls.minTSS), maxTSS: getInt(controls.maxTSS),
+            coding: getVal(controls.coding), gene: getVal(controls.gene).toLowerCase().trim()
         };
-
         return transcripts.filter(t => {
             if (filters.minExons !== null && (t.exons === null || t.exons < filters.minExons)) return false;
             if (filters.maxExons !== null && (t.exons === null || t.exons > filters.maxExons)) return false;
@@ -565,22 +558,11 @@
             return true;
         });
     }
-
-    function previewFilters() {
-        const filteredData = getFilteredIsoforms();
-        resultsCount.textContent = `Preview: Showing ${filteredData.length} of ${transcripts.length} transcripts.`;
-        renderTable(filteredData);
-    }
-
-    function applyFiltersToUCSC() {
-        if (!hgsid) {
-            alert('This page must be opened from the UCSC Genome Browser to apply filters to the browser view.\n\n(hgsid parameter not found in URL)');
-            return;
-        }
-        
+    
+    function updateUCSCLink() {
+        if (!hgsid) return;
         const filteredData = getFilteredIsoforms();
         const isoform_ids = filteredData.map(t => t.isoform);
-        
         const ucscUrl = new URL(`${ucscHost}/cgi-bin/hgTracks`);
         ucscUrl.searchParams.set('hgsid', hgsid);
 
@@ -588,39 +570,60 @@
             ucscUrl.searchParams.set(trackName, 'hide');
         } else {
             const filterText = isoform_ids.join(' ');
-            if (filterText.length > 2000) {
-                alert(`The filter is too broad (${isoform_ids.length} transcripts), resulting in a URL that is too long for the browser. Please narrow your filtering criteria.`);
+            if (filterText.length > 4000) { // Increased limit for modern browsers
+                applyLink.classList.add('disabled');
+                applyLink.href = '#';
+                resultsCount.innerHTML += ' <strong style="color: red;">(Filter too broad to apply to UCSC view)</strong>';
                 return;
             }
             ucscUrl.searchParams.set(`hg_t_${trackName}_filter`, 'on');
             ucscUrl.searchParams.set(`hg_t_${trackName}_filter_text`, filterText);
         }
-        
-        window.top.location.href = ucscUrl.toString();
+        applyLink.classList.remove('disabled');
+        applyLink.href = ucscUrl.toString();
     }
 
-    function resetViewInUCSC() {
-        if (!hgsid) {
-            alert('This page must be opened from the UCSC Genome Browser to reset the view.\n\n(hgsid parameter not found in URL)');
-            return;
+    function previewFilters() {
+        tableWrapper.style.display = 'block';
+        const filteredData = getFilteredIsoforms();
+        resultsCount.textContent = `Preview: Showing ${filteredData.length} of ${transcripts.length} transcripts.`;
+        if (!tableRendered || filteredData.length !== transcripts.length) {
+            renderTable(filteredData);
+        } else if (tableRendered && filteredData.length === transcripts.length) {
+             // If table is already rendered with all data, no need to re-render
+        } else {
+             renderTable(transcripts); // Failsafe
         }
-
-        const ucscUrl = new URL(`${ucscHost}/cgi-bin/hgTracks`);
-        ucscUrl.searchParams.set('hgsid', hgsid);
-        ucscUrl.searchParams.set(`hg_t_${trackName}_filter`, 'off');
-        ucscUrl.searchParams.set(trackName, 'dense'); // Ensure track is visible
-        
-        window.top.location.href = ucscUrl.toString();
+        updateUCSCLink();
     }
     
-    document.getElementById('preview-filters').addEventListener('click', previewFilters);
-    document.getElementById('apply-filters-ucsc').addEventListener('click', applyFiltersToUCSC);
-    document.getElementById('reset-filters-ucsc').addEventListener('click', resetViewInUCSC);
+    function toggleTable() {
+        const isHidden = tableWrapper.style.display === 'none';
+        tableWrapper.style.display = isHidden ? 'block' : 'none';
+        if (isHidden && !tableRendered) {
+            renderTable(transcripts);
+        }
+    }
 
-    // Initial load
+    document.getElementById('preview-filters').addEventListener('click', previewFilters);
+    document.getElementById('toggle-table').addEventListener('click', toggleTable);
+    Object.values(controls).forEach(el => el.addEventListener('input', updateUCSCLink));
+
     document.addEventListener('DOMContentLoaded', () => {
-        resultsCount.textContent = `Showing ${transcripts.length} of ${transcripts.length} transcripts.`;
-        renderTable(transcripts);
+        if (!hgsid) {
+            applyLink.classList.add('disabled');
+            resetLink.classList.add('disabled');
+            const newTitle = document.createElement('p');
+            newTitle.innerHTML = '<strong>Note:</strong> Browser view controls are disabled. Open this page from a UCSC track description to enable them.';
+            document.querySelector('#button-container').insertAdjacentElement('afterend', newTitle);
+        } else {
+            const resetUrl = new URL(`${ucscHost}/cgi-bin/hgTracks`);
+            resetUrl.searchParams.set('hgsid', hgsid);
+            resetUrl.searchParams.set(`hg_t_${trackName}_filter`, 'off');
+            resetUrl.searchParams.set(trackName, 'dense');
+            resetLink.href = resetUrl.toString();
+            updateUCSCLink();
+        }
     });
 </script>
 </body>
