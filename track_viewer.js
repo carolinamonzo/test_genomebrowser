@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the "Apply to Browser" link with a list of filtered transcript IDs
     const updateUcscLink = (transcriptIds) => {
         if (transcriptIds.length > 0 && transcriptIds.length < transcripts.length) {
-            const ucscUrl = `../cgi-bin/hgTracks?db=%%GENOME%%&hgFind.matches=${transcriptIds.join(',')}`;
+            const ucscUrl = `../cgi-bin/hgTracks?db=hg38&hgFind.matches=${transcriptIds.join(',')}`;
             elements.applyButton.href = ucscUrl;
             elements.applyButton.classList.remove('disabled');
         } else {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Generate the reset URL
-    elements.resetButton.href = `../cgi-bin/hgTracks?db=%%GENOME%%&setTrackVisibility=hide&${trackName}=dense`;
+    elements.resetButton.href = `../cgi-bin/hgTracks?db=hg38&setTrackVisibility=hide&${trackName}=dense`;
 
     // --- INITIALIZATION ---
 
