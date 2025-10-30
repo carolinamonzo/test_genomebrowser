@@ -2,7 +2,7 @@ track hg38_sqanti3
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type bigBed 12 + 8
+type bigBed
 visibility dense
 group transcripts
 itemRgb on
@@ -12,22 +12,6 @@ html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg3
 searchIndex name
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterBy structCat full-splice_match,incomplete-splice_match,novel_in_catalog,novel_not_in_catalog,genic,antisense,fusion,intergenic,genic_intron
-filterLabel.structCat Structural category
-filterBy subcategory mono-exon,multi-exon,canonical,non-canonical,novel,known
-filterLabel.subcategory Subcategory
-filterBy coding coding,non_coding,partial_coding,pseudo
-filterLabel.coding Coding status
-filterBy fsmClass A,B,C,D
-filterLabel.fsmClass FSM class
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
 searchTrix trix.ix
 
 track hg38_sqanti3_full-splice_match
