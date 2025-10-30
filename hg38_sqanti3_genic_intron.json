@@ -2,7 +2,7 @@
   "genome": "hg38",
   "category": "genic_intron",
   "record_count": 147,
-  "generated_at": "2025-10-30T16:37:54.044688Z",
+  "generated_at": "2025-10-30T16:39:49.132097Z",
   "stats": {
     "length": {
       "min": 94,
