@@ -2,7 +2,7 @@ track hg38_sqanti3
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type bigBed
+type bigBed 12 + 8
 visibility dense
 group transcripts
 itemRgb on
@@ -18,7 +18,7 @@ track hg38_sqanti3_full-splice_match
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_full-splice_match.bb
 shortLabel SQANTI3 full-splice_match
 longLabel SQANTI3 full-splice_match transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -26,24 +26,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_full-splice_match.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_incomplete-splice_match
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_incomplete-splice_match.bb
 shortLabel SQANTI3 incomplete-splice_match
 longLabel SQANTI3 incomplete-splice_match transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -51,24 +39,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_incomplete-splice_match.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_novel_in_catalog
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_in_catalog.bb
 shortLabel SQANTI3 novel_in_catalog
 longLabel SQANTI3 novel_in_catalog transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -76,24 +52,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_in_catalog.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_novel_not_in_catalog
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_not_in_catalog.bb
 shortLabel SQANTI3 novel_not_in_catalog
 longLabel SQANTI3 novel_not_in_catalog transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -101,24 +65,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_novel_not_in_catalog.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_genic
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic.bb
 shortLabel SQANTI3 genic
 longLabel SQANTI3 genic transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -126,24 +78,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_antisense
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_antisense.bb
 shortLabel SQANTI3 antisense
 longLabel SQANTI3 antisense transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -151,24 +91,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_antisense.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_fusion
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_fusion.bb
 shortLabel SQANTI3 fusion
 longLabel SQANTI3 fusion transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -176,24 +104,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_fusion.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_intergenic
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_intergenic.bb
 shortLabel SQANTI3 intergenic
 longLabel SQANTI3 intergenic transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -201,24 +117,12 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_intergenic.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)
 
 track hg38_sqanti3_genic_intron
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic_intron.bb
 shortLabel SQANTI3 genic_intron
 longLabel SQANTI3 genic_intron transcripts
-type bigBed 12 + 47
+type bigBed 12 + 39
 visibility hide
 group transcripts
 itemRgb on
@@ -226,15 +130,3 @@ priority 3
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_genic_intron.html
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-filterByRange length 0:1000000
-filterLabel.length Transcript length (bp)
-filterByRange exons 0:100
-filterLabel.exons Exon count
-filterByRange coverage 0:1000
-filterLabel.coverage Minimum coverage
-filterByRange expression 0:1000000
-filterLabel.expression Isoform expression
-filterByRange diff_to_TSS -100000:100000
-filterLabel.diff_to_TSS Distance to TSS (bp)
-filterByRange diff_to_gene_TSS -100000:100000
-filterLabel.diff_to_gene_TSS Distance to gene TSS (bp)

@@ -5,14 +5,438 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hg38 SQANTI3 incomplete-splice_match</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        h1 { color: #333; }
-        ul { list-style-type: disc; margin-left: 20px; }
+        :root { color-scheme: light; }
+        body { font-family: Arial, sans-serif; line-height: 1.5; margin: 20px; color: #1f2933; background-color: #ffffff; }
+        h1 { color: #1f2933; margin-bottom: 0.5em; }
+        p { max-width: 960px; }
+        strong { color: #0b7285; }
+        .filter-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 20px 0; }
+        .filter-group { background: #f2f4f8; padding: 12px 14px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 6px; }
+        .filter-group label { font-weight: 600; font-size: 0.85rem; color: #334155; }
+        .filter-group input { padding: 6px 8px; border: 1px solid #cbd5f5; border-radius: 6px; font-size: 0.9rem; }
+        .facet-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 16px; }
+        .facet-column { background: #f8fafc; border: 1px solid #dbeafe; border-radius: 8px; padding: 12px; }
+        .facet-column h3 { margin: 0 0 8px; font-size: 0.9rem; color: #1d4ed8; }
+        .facet-options { display: flex; flex-direction: column; gap: 4px; max-height: 180px; overflow-y: auto; }
+        .facet-options label { display: flex; gap: 6px; align-items: center; font-size: 0.85rem; color: #1f2937; cursor: pointer; }
+        .actions { display: flex; gap: 12px; margin: 10px 0 16px; }
+        .actions button { background: #2563eb; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .actions button.secondary { background: #64748b; }
+        .actions button:disabled { background: #94a3b8; cursor: not-allowed; }
+        .status { margin-bottom: 14px; font-size: 0.9rem; color: #0f172a; }
+        .table-wrapper { overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        thead { background: #eff6ff; position: sticky; top: 0; z-index: 1; }
+        th, td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; white-space: nowrap; }
+        tbody tr:hover { background: #f1f5f9; }
+        .muted { color: #64748b; }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #0f172a; color: #e2e8f0; }
+            .filter-group, .facet-column { background: #1e293b; border-color: #334155; }
+            .facet-column h3 { color: #60a5fa; }
+            table { color: #e2e8f0; }
+            thead { background: #1e293b; }
+            th, td { border-bottom-color: #273549; }
+            .table-wrapper { border-color: #273549; }
+            .actions button { background: #3b82f6; }
+            .actions button.secondary { background: #475569; }
+        }
     </style>
-    </head>
+</head>
 <body>
     <h1>SQANTI3 incomplete-splice_match (hg38)</h1>
-    <p>This track shows only transcripts in the <strong>incomplete-splice_match</strong> structural category.</p>
-    <p>Colors follow the SQANTI3 palette. Use the track display settings to adjust visibility and score (exon count) range.</p>
+    <p>Interactively filter transcripts belonging to the <strong>incomplete-splice_match</strong> structural category. Use the numeric ranges and facet checkboxes to focus on features such as exon count, distance to TSS, or canonical support.</p>
+    <div class="filter-grid">
+        <div class="filter-group">
+            <label for="minExons">Min exons</label>
+            <input type="number" id="minExons" placeholder="min">
+            <label for="maxExons">Max exons</label>
+            <input type="number" id="maxExons" placeholder="max">
+        </div>
+        <div class="filter-group">
+            <label for="minLength">Min length (bp)</label>
+            <input type="number" id="minLength" placeholder="min">
+            <label for="maxLength">Max length (bp)</label>
+            <input type="number" id="maxLength" placeholder="max">
+        </div>
+        <div class="filter-group">
+            <label for="minTss">Min Δ to TSS (bp)</label>
+            <input type="number" id="minTss" placeholder="min">
+            <label for="maxTss">Max Δ to TSS (bp)</label>
+            <input type="number" id="maxTss" placeholder="max">
+        </div>
+        <div class="filter-group">
+            <label for="searchInput">Search</label>
+            <input type="text" id="searchInput" placeholder="Isoform, gene, transcript">
+        </div>
+    </div>
+    <div class="facet-grid">
+        <div class="facet-column" id="codingFacet">
+            <h3>Coding status</h3>
+            <div class="facet-options"></div>
+        </div>
+        <div class="facet-column" id="fsmFacet">
+            <h3>FSM class</h3>
+            <div class="facet-options"></div>
+        </div>
+        <div class="facet-column" id="flFacet">
+            <h3>Full-length flag</h3>
+            <div class="facet-options"></div>
+        </div>
+        <div class="facet-column" id="canonicalFacet">
+            <h3>All canonical junctions</h3>
+            <div class="facet-options"></div>
+        </div>
+    </div>
+    <div class="actions">
+        <button id="resetFilters" type="button" class="secondary">Reset filters</button>
+        <button id="downloadTsv" type="button">Download TSV</button>
+    </div>
+    <div id="status" class="status">Loading transcript metadata…</div>
+    <div class="table-wrapper">
+        <table id="resultsTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        const DATA_URL = "https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_incomplete-splice_match.json";
+        const state = { data: [], filtered: [], stats: {}, facets: {}, category: "incomplete-splice_match", columns: [] };
+        const elements = {};
+        const columnDefinitions = [
+            { key: 'isoform', label: 'Isoform' },
+            { key: 'associated_gene', label: 'Gene' },
+            { key: 'associated_transcript', label: 'Reference transcript' },
+            { key: 'exons', label: 'Exons' },
+            { key: 'length', label: 'Length (bp)' },
+            { key: 'diff_to_TSS', label: 'Δ to TSS' },
+            { key: 'min_cov', label: 'Min coverage' },
+            { key: 'iso_exp', label: 'Isoform expression' },
+            { key: 'coding', label: 'Coding' },
+            { key: 'FSM_class', label: 'FSM' },
+            { key: 'all_canonical', label: 'Canonical' },
+            { key: 'FL', label: 'Full length' }
+        ];
+        const defaultExportColumns = ['isoform','associated_gene','associated_transcript','structural_category','subcategory','coding','FSM_class','exons','length','min_cov','iso_exp','diff_to_TSS','diff_to_TTS','diff_to_gene_TSS','diff_to_gene_TTS','all_canonical','FL','RTS_stage','predicted_NMD','dist_to_CAGE_peak','dist_to_polyA_site','polyA_motif'];
+        document.addEventListener('DOMContentLoaded', () => {
+            elements.thead = document.querySelector('#resultsTable thead');
+            elements.tbody = document.querySelector('#resultsTable tbody');
+            elements.status = document.getElementById('status');
+            elements.minExons = document.getElementById('minExons');
+            elements.maxExons = document.getElementById('maxExons');
+            elements.minLength = document.getElementById('minLength');
+            elements.maxLength = document.getElementById('maxLength');
+            elements.minTss = document.getElementById('minTss');
+            elements.maxTss = document.getElementById('maxTss');
+            elements.reset = document.getElementById('resetFilters');
+            elements.download = document.getElementById('downloadTsv');
+            elements.search = document.getElementById('searchInput');
+            elements.facets = {
+                coding: document.getElementById('codingFacet'),
+                FSM_class: document.getElementById('fsmFacet'),
+                FL: document.getElementById('flFacet'),
+                all_canonical: document.getElementById('canonicalFacet')
+            };
+            renderTableHead();
+            fetch(DATA_URL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(payload => initialize(payload))
+                .catch(error => {
+                    elements.status.textContent = `Failed to load transcript metadata: ${error.message}`;
+                    console.error(error);
+                });
+        });
+        function initialize(payload) {
+            state.data = Array.isArray(payload.records) ? payload.records : [];
+            state.filtered = state.data.slice();
+            state.stats = payload.stats || {};
+            state.facets = payload.facets || {};
+            state.category = payload.category || state.category;
+            state.columns = Array.isArray(payload.columns) && payload.columns.length ? payload.columns : defaultExportColumns;
+            populateFacetOptions();
+            setDefaults();
+            bindEvents();
+            applyFilters();
+        }
+        function renderTableHead() {
+            if (!elements.thead) return;
+            elements.thead.innerHTML = '';
+            const row = document.createElement('tr');
+            columnDefinitions.forEach(col => {
+                const th = document.createElement('th');
+                th.textContent = col.label;
+                row.appendChild(th);
+            });
+            elements.thead.appendChild(row);
+        }
+        function populateFacetOptions() {
+            Object.entries(elements.facets).forEach(([facetName, container]) => {
+                if (!container) { return; }
+                const optionsWrapper = container.querySelector('.facet-options');
+                if (!optionsWrapper) { return; }
+                optionsWrapper.innerHTML = '';
+                const values = (state.facets && state.facets[facetName]) ? state.facets[facetName] : [];
+                if (!values.length) {
+                    container.style.display = 'none';
+                    return;
+                }
+                container.style.display = '';
+                values.forEach((value, idx) => {
+                    const label = document.createElement('label');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = true;
+                    checkbox.value = value;
+                    checkbox.dataset.facet = facetName;
+                    checkbox.id = `${facetName}_${idx}`;
+                    const span = document.createElement('span');
+                    span.textContent = formatFacetLabel(facetName, value);
+                    label.appendChild(checkbox);
+                    label.appendChild(span);
+                    optionsWrapper.appendChild(label);
+                });
+            });
+        }
+        function setDefaults() {
+            applyDefaultRange(elements.minExons, elements.maxExons, state.stats.exons);
+            applyDefaultRange(elements.minLength, elements.maxLength, state.stats.length);
+            applyDefaultRange(elements.minTss, elements.maxTss, state.stats.diff_to_TSS);
+            if (elements.search) {
+                elements.search.value = '';
+            }
+        }
+        function applyDefaultRange(minInput, maxInput, stats) {
+            if (!minInput || !maxInput) return;
+            if (stats && typeof stats.min !== 'undefined' && stats.min !== null) {
+                minInput.value = stats.min;
+            } else {
+                minInput.value = '';
+            }
+            if (stats && typeof stats.max !== 'undefined' && stats.max !== null) {
+                maxInput.value = stats.max;
+            } else {
+                maxInput.value = '';
+            }
+        }
+        function bindEvents() {
+            [elements.minExons, elements.maxExons, elements.minLength, elements.maxLength, elements.minTss, elements.maxTss].forEach(input => {
+                if (!input) return;
+                input.addEventListener('input', debounce(applyFilters, 150));
+            });
+            if (elements.search) {
+                elements.search.addEventListener('input', debounce(applyFilters, 200));
+            }
+            if (elements.reset) {
+                elements.reset.addEventListener('click', () => {
+                    setDefaults();
+                    resetFacetSelections();
+                    applyFilters();
+                });
+            }
+            if (elements.download) {
+                elements.download.addEventListener('click', downloadTsv);
+            }
+            document.addEventListener('change', event => {
+                if (event.target && event.target.matches('input[type="checkbox"][data-facet]')) {
+                    applyFilters();
+                }
+            });
+        }
+        function resetFacetSelections() {
+            document.querySelectorAll('input[type="checkbox"][data-facet]').forEach(box => {
+                box.checked = true;
+            });
+        }
+        function applyFilters() {
+            const minExons = valueAsNumber(elements.minExons);
+            const maxExons = valueAsNumber(elements.maxExons);
+            const minLength = valueAsNumber(elements.minLength);
+            const maxLength = valueAsNumber(elements.maxLength);
+            const minTss = valueAsNumber(elements.minTss);
+            const maxTss = valueAsNumber(elements.maxTss);
+            const searchTerm = elements.search && elements.search.value ? elements.search.value.trim().toLowerCase() : '';
+            const facetFilters = collectFacetSelections();
+            state.filtered = state.data.filter(record => {
+                if (!passesNumericFilter(record.exons, minExons, maxExons)) { return false; }
+                if (!passesNumericFilter(record.length, minLength, maxLength)) { return false; }
+                if (!passesNumericFilter(record.diff_to_TSS, minTss, maxTss)) { return false; }
+                if (!passesFacetFilter(facetFilters.coding, normalizeFacetValue('coding', record.coding))) { return false; }
+                if (!passesFacetFilter(facetFilters.FSM_class, normalizeFacetValue('FSM_class', record.FSM_class))) { return false; }
+                if (!passesFacetFilter(facetFilters.FL, normalizeFacetValue('FL', record.FL))) { return false; }
+                if (!passesFacetFilter(facetFilters.all_canonical, normalizeFacetValue('all_canonical', record.all_canonical))) { return false; }
+                if (searchTerm) {
+                    const haystack = [
+                        record.isoform,
+                        record.associated_gene,
+                        record.associated_transcript,
+                        record.structural_category,
+                        record.subcategory
+                    ].filter(Boolean).join(' ').toLowerCase();
+                    if (!haystack.includes(searchTerm)) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+            renderTable();
+            updateStatus();
+        }
+        function renderTable() {
+            if (!elements.tbody) return;
+            elements.tbody.innerHTML = '';
+            if (!state.filtered.length) {
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                cell.colSpan = columnDefinitions.length;
+                cell.className = 'muted';
+                cell.textContent = 'No transcripts match the current filters.';
+                row.appendChild(cell);
+                elements.tbody.appendChild(row);
+                return;
+            }
+            state.filtered.slice(0, 5000).forEach(record => {
+                const row = document.createElement('tr');
+                columnDefinitions.forEach(col => {
+                    const cell = document.createElement('td');
+                    cell.textContent = formatCellValue(col.key, record[col.key]);
+                    row.appendChild(cell);
+                });
+                elements.tbody.appendChild(row);
+            });
+            if (state.filtered.length > 5000) {
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                cell.colSpan = columnDefinitions.length;
+                cell.className = 'muted';
+                cell.textContent = `Showing first 5000 transcripts (of ${state.filtered.length}). Download TSV for the full selection.`;
+                row.appendChild(cell);
+                elements.tbody.appendChild(row);
+            }
+        }
+        function updateStatus() {
+            if (!elements.status) return;
+            const total = state.data.length;
+            const shown = state.filtered.length;
+            elements.status.textContent = `${shown.toLocaleString()} of ${total.toLocaleString()} transcripts displayed`;
+        }
+        function collectFacetSelections() {
+            const selections = { coding: [], FSM_class: [], FL: [], all_canonical: [] };
+            document.querySelectorAll('input[type="checkbox"][data-facet]').forEach(box => {
+                if (box.checked) {
+                    selections[box.dataset.facet].push(box.value);
+                }
+            });
+            Object.keys(selections).forEach(key => {
+                const totalBoxes = document.querySelectorAll(`input[type="checkbox"][data-facet="${key}"]`).length;
+                if (!selections[key].length || selections[key].length === totalBoxes) {
+                    selections[key] = [];
+                }
+            });
+            return selections;
+        }
+        function passesFacetFilter(filterValues, candidate) {
+            if (!filterValues || !filterValues.length) { return true; }
+            return filterValues.includes(candidate);
+        }
+        function normalizeFacetValue(facetName, value) {
+            if (facetName === 'coding') {
+                return value ? value.toString() : 'unknown';
+            }
+            if (facetName === 'FSM_class') {
+                return value ? value.toString() : 'NA';
+            }
+            if (facetName === 'FL' || facetName === 'all_canonical') {
+                if (!value) { return 'UNKNOWN'; }
+                return value.toString().toUpperCase();
+            }
+            return value || '';
+        }
+        function passesNumericFilter(value, minValue, maxValue) {
+            if (value === null || value === undefined || value === '') {
+                if (minValue !== null || maxValue !== null) {
+                    return false;
+                }
+                return true;
+            }
+            if (minValue !== null && value < minValue) { return false; }
+            if (maxValue !== null && value > maxValue) { return false; }
+            return true;
+        }
+        function formatCellValue(key, value) {
+            if (value === null || value === undefined || value === '') {
+                return '—';
+            }
+            if (key === 'min_cov' || key === 'iso_exp') {
+                const num = Number(value);
+                if (!Number.isFinite(num)) { return '—'; }
+                return num.toFixed(2);
+            }
+            if (key === 'all_canonical' || key === 'FL') {
+                const normalized = normalizeFacetValue(key, value);
+                if (['TRUE','YES','1'].includes(normalized)) { return 'Yes'; }
+                if (['FALSE','NO','0'].includes(normalized)) { return 'No'; }
+                if (normalized === 'UNKNOWN' || normalized === '') { return '—'; }
+                return normalized;
+            }
+            return value;
+        }
+        function formatFacetLabel(facetName, value) {
+            if (!value || value === 'UNKNOWN') { return 'Unknown'; }
+            if (facetName === 'FL') {
+                if (value.toUpperCase() === 'TRUE') { return 'Full-length'; }
+                if (value.toUpperCase() === 'FALSE') { return 'Not full-length'; }
+            }
+            if (facetName === 'all_canonical') {
+                if (value.toUpperCase() === 'TRUE') { return 'All canonical'; }
+                if (value.toUpperCase() === 'FALSE') { return 'Non-canonical'; }
+            }
+            if (facetName === 'FSM_class' && value === 'NA') {
+                return 'Not assigned';
+            }
+            return value;
+        }
+        function valueAsNumber(input) {
+            if (!input || input.value === '') { return null; }
+            const num = Number(input.value);
+            return Number.isFinite(num) ? num : null;
+        }
+        function debounce(fn, delay) {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => fn.apply(null, args), delay);
+            };
+        }
+        function downloadTsv() {
+            if (!state.filtered.length) {
+                alert('No transcripts to export.');
+                return;
+            }
+            const headers = state.columns;
+            const lines = [headers.join('	')];
+            state.filtered.forEach(record => {
+                const row = headers.map(key => {
+                    const value = record[key];
+                    if (value === null || value === undefined) { return ''; }
+                    if (Array.isArray(value)) { return value.join(','); }
+                    return value;
+                });
+                lines.push(row.join('	'));
+            });
+            const blob = new Blob([lines.join('
+')], { type: 'text/tab-separated-values' });
+            const url = URL.createObjectURL(blob);
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = `${state.category}_filtered.tsv`;
+            anchor.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>
