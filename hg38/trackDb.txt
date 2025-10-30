@@ -24,6 +24,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_full-splice_match.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -37,6 +44,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_incomplete-splice_match.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -50,6 +64,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_novel_in_catalog.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -63,6 +84,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_novel_not_in_catalog.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -76,6 +104,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_genic.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -89,6 +124,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_antisense.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -102,6 +144,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_fusion.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -115,6 +164,13 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_intergenic.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
 
@@ -128,5 +184,12 @@ group transcripts
 itemRgb on
 priority 3
 html https://cdn.jsdelivr.net/gh/carolinamonzo/test_genomebrowser@main/hg38_sqanti3_genic_intron.html
+filter.subcategory on
+filter.coding on
+filter.fsmClass on
+filterByRange.length 0:50000
+filterByRange.exons 0:100
+filterByRange.coverage 0:1000
+filterByRange.expression 0:1000
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
