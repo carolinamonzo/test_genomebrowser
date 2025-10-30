@@ -9,16 +9,120 @@
         h1 { color: #333; }
         ul { list-style-type: disc; margin-left: 20px; }
         code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        .panel { border: 1px solid #ddd; padding: 16px; border-radius: 8px; margin: 16px 0; }
+        .row { display: flex; flex-wrap: wrap; gap: 16px; }
+        .col { min-width: 220px; }
+        label { display: block; margin: 6px 0 2px; font-weight: bold; }
+        input[type=number] { width: 110px; }
+        button { padding: 8px 14px; margin-top: 10px; cursor: pointer; }
+        .hint { color: #666; font-size: 0.9em; }
     </style>
-</head>
+    <script>
+      const IS_BB12PLUS = true;
+      const HAS_ABSOLUTE_URL = true;
+      function buildAndOpenCustomTrack() {
+        if (!HAS_ABSOLUTE_URL) {
+          alert('This quick-filter button needs absolute data URLs. Re-run with --github-repo or host files at absolute URLs. You can still use the Track Settings filters.');
+          return;
+        }
+        const db = 'hg38';
+        const bigDataUrl = 'https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3.bb';
+        const pieces = [];
+        pieces.push('track hg38_sqanti3_filtered');
+        pieces.push('bigDataUrl ' + bigDataUrl);
+        pieces.push('shortLabel SQANTI3 Transcripts (filtered)');
+        pieces.push('type bigBed' + (IS_BB12PLUS ? ' 12 + 8' : ''));
+        pieces.push('itemRgb on');
+        if (IS_BB12PLUS) {
+          const cats = Array.from(document.querySelectorAll('input[name=structCat]:checked')).map(x=>x.value);
+          if (cats.length) pieces.push('filterBy structCat ' + cats.join(','));
+          const cods = Array.from(document.querySelectorAll('input[name=coding]:checked')).map(x=>x.value);
+          if (cods.length) pieces.push('filterBy coding ' + cods.join(','));
+          const fsm = Array.from(document.querySelectorAll('input[name=fsmClass]:checked')).map(x=>x.value);
+          if (fsm.length) pieces.push('filterBy fsmClass ' + fsm.join(','));
+          const subcats = Array.from(document.querySelectorAll('input[name=subcategory]:checked')).map(x=>x.value);
+          if (subcats.length) pieces.push('filterBy subcategory ' + subcats.join(','));
+          const exMin = document.getElementById('exonsMin').value;
+          const exMax = document.getElementById('exonsMax').value;
+          if (exMin || exMax) pieces.push('filterByRange exons ' + (exMin||0) + ':' + (exMax||100));
+          const lenMin = document.getElementById('lenMin').value;
+          const lenMax = document.getElementById('lenMax').value;
+          if (lenMin || lenMax) pieces.push('filterByRange length ' + (lenMin||0) + ':' + (lenMax||1000000));
+          const covMin = document.getElementById('covMin').value;
+          const covMax = document.getElementById('covMax').value;
+          if (covMin || covMax) pieces.push('filterByRange coverage ' + (covMin||0) + ':' + (covMax||1000));
+          const expMin = document.getElementById('expMin').value;
+          const expMax = document.getElementById('expMax').value;
+          if (expMin || expMax) pieces.push('filterByRange expression ' + (expMin||0) + ':' + (expMax||1000000));
+        } else {
+          const exMin = document.getElementById('exonsMin').value;
+          const exMax = document.getElementById('exonsMax').value;
+          if (exMin || exMax) pieces.push('filterByRange blockCount ' + (exMin||0) + ':' + (exMax||100));
+        }
+        const customText = encodeURIComponent(pieces.join('
+'));
+        const url = 'https://genome.ucsc.edu/cgi-bin/hgTracks?db=' + encodeURIComponent(db) + '&hgt.customText=' + customText;
+        window.location.href = url;
+      }
+    </script>
+    </head>
 <body>
     <h1>SQANTI3 Transcripts (hg38)</h1>
     <p>This track displays SQANTI3 transcript models. Colors indicate structural category.</p>
-    <h3>Filtering</h3>
-    <ul>
-        <li>Search by name-encoded tokens (e.g., <code>intergenic</code>, <code>mono-exon</code>, <code>FSM1</code>).</li>
-        
-    </ul>
+    <div class="panel">
+      <h3>Quick filters</h3>
+      <div class="row">
+        <div class="col">
+          <label>Structural category</label>
+          <div><input type="checkbox" name="structCat" value="full-splice_match"> full-splice_match</div>
+          <div><input type="checkbox" name="structCat" value="incomplete-splice_match"> incomplete-splice_match</div>
+          <div><input type="checkbox" name="structCat" value="novel_in_catalog"> novel_in_catalog</div>
+          <div><input type="checkbox" name="structCat" value="novel_not_in_catalog"> novel_not_in_catalog</div>
+          <div><input type="checkbox" name="structCat" value="genic"> genic</div>
+          <div><input type="checkbox" name="structCat" value="antisense"> antisense</div>
+          <div><input type="checkbox" name="structCat" value="fusion"> fusion</div>
+          <div><input type="checkbox" name="structCat" value="intergenic"> intergenic</div>
+          <div><input type="checkbox" name="structCat" value="genic_intron"> genic_intron</div>
+        </div>
+        <div class="col">
+          <label>Coding status</label>
+          <div><input type="checkbox" name="coding" value="coding"> coding</div>
+          <div><input type="checkbox" name="coding" value="non_coding"> non_coding</div>
+          <div><input type="checkbox" name="coding" value="partial_coding"> partial_coding</div>
+          <div><input type="checkbox" name="coding" value="pseudo"> pseudo</div>
+          <label style="margin-top:8px;">FSM class</label>
+          <div><input type="checkbox" name="fsmClass" value="A"> A</div>
+          <div><input type="checkbox" name="fsmClass" value="B"> B</div>
+          <div><input type="checkbox" name="fsmClass" value="C"> C</div>
+          <div><input type="checkbox" name="fsmClass" value="D"> D</div>
+        </div>
+        <div class="col">
+          <label>Subcategory</label>
+          <div><input type="checkbox" name="subcategory" value="mono-exon"> mono-exon</div>
+          <div><input type="checkbox" name="subcategory" value="multi-exon"> multi-exon</div>
+          <div><input type="checkbox" name="subcategory" value="canonical"> canonical</div>
+          <div><input type="checkbox" name="subcategory" value="non-canonical"> non-canonical</div>
+          <div><input type="checkbox" name="subcategory" value="novel"> novel</div>
+          <div><input type="checkbox" name="subcategory" value="known"> known</div>
+        </div>
+        <div class="col">
+          <label>Exon count</label>
+          <input id="exonsMin" type="number" min="0" placeholder="min"> - 
+          <input id="exonsMax" type="number" min="0" placeholder="max"><br>
+          <label>Length (bp)</label>
+          <input id="lenMin" type="number" min="0" placeholder="min"> - 
+          <input id="lenMax" type="number" min="0" placeholder="max"><br>
+          <label>Coverage</label>
+          <input id="covMin" type="number" min="0" placeholder="min"> - 
+          <input id="covMax" type="number" min="0" placeholder="max"><br>
+          <label>Expression</label>
+          <input id="expMin" type="number" min="0" placeholder="min"> - 
+          <input id="expMax" type="number" min="0" placeholder="max"><br>
+        </div>
+      </div>
+      <button onclick="buildAndOpenCustomTrack()">Open filtered track in UCSC</button>
+      <div class="hint">This creates a temporary custom track that points to the same bigBed with your filters applied.</div>
+    </div>
     <h3>Color Legend</h3>
     <ul>
         <li>Full-splice match: #6BAED6</li>
