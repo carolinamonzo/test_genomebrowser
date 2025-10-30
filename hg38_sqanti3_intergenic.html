@@ -15,10 +15,12 @@
         input:focus, select:focus { border-color: #80bdff; outline: 0; box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); }
         #button-container { grid-column: 1 / -1; display: flex; gap: 10px; }
         button { padding: 10px 15px; font-size: 15px; font-weight: 500; border-radius: 5px; border: none; cursor: pointer; }
-        #apply-filters { background-color: #007bff; color: white; }
-        #apply-filters:hover { background-color: #0069d9; }
-        #reset-filters { background-color: #6c757d; color: white; }
-        #reset-filters:hover { background-color: #5a6268; }
+        #preview-filters { background-color: #17a2b8; color: white; }
+        #preview-filters:hover { background-color: #138496; }
+        #apply-filters-ucsc { background-color: #28a745; color: white; }
+        #apply-filters-ucsc:hover { background-color: #218838; }
+        #reset-filters-ucsc { background-color: #dc3545; color: white; }
+        #reset-filters-ucsc:hover { background-color: #c82333; }
         #results-count { font-size: 1.1em; font-weight: 500; margin-bottom: 15px; color: #495057; }
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #dee2e6; }
@@ -472,8 +474,9 @@
             <input type="text" id="gene-search" placeholder="e.g. ENSG...">
         </div>
         <div id="button-container">
-            <button id="apply-filters">Apply Filters</button>
-            <button id="reset-filters">Reset</button>
+            <button id="preview-filters">Preview Filters Locally</button>
+            <button id="apply-filters-ucsc">Apply to Browser View</button>
+            <button id="reset-filters-ucsc">Reset Browser View</button>
         </div>
     </div>
     
@@ -493,6 +496,11 @@
 
     const resultsContainer = document.getElementById('results-container');
     const resultsCount = document.getElementById('results-count');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const hgsid = urlParams.get('hgsid');
+    const trackName = `hg38_sqanti3_intergenic`;
+    const ucscHost = 'https://genome.ucsc.edu';
 
     function renderTable(data) {
         if (!data || data.length === 0) {
@@ -534,7 +542,7 @@
         resultsContainer.innerHTML = tableHTML;
     }
 
-    function applyFilters() {
+    function getFilteredIsoforms() {
         const getVal = (el) => el.value;
         const getInt = (el) => el.value ? parseInt(el.value, 10) : null;
         
@@ -547,7 +555,7 @@
             gene: getVal(controls.gene).toLowerCase().trim()
         };
 
-        const filteredData = transcripts.filter(t => {
+        return transcripts.filter(t => {
             if (filters.minExons !== null && (t.exons === null || t.exons < filters.minExons)) return false;
             if (filters.maxExons !== null && (t.exons === null || t.exons > filters.maxExons)) return false;
             if (filters.minTSS !== null && (t.diff_to_TSS === null || t.diff_to_TSS < filters.minTSS)) return false;
@@ -556,28 +564,63 @@
             if (filters.gene && (!t.associated_gene || !t.associated_gene.toLowerCase().includes(filters.gene))) return false;
             return true;
         });
+    }
 
-        resultsCount.textContent = `Showing ${filteredData.length} of ${transcripts.length} transcripts.`;
+    function previewFilters() {
+        const filteredData = getFilteredIsoforms();
+        resultsCount.textContent = `Preview: Showing ${filteredData.length} of ${transcripts.length} transcripts.`;
         renderTable(filteredData);
     }
 
-    function resetFilters() {
-        Object.values(controls).forEach(el => {
-            if (el.tagName === 'SELECT') {
-                el.value = 'all';
-            } else {
-                el.value = '';
+    function applyFiltersToUCSC() {
+        if (!hgsid) {
+            alert('This page must be opened from the UCSC Genome Browser to apply filters to the browser view.\n\n(hgsid parameter not found in URL)');
+            return;
+        }
+        
+        const filteredData = getFilteredIsoforms();
+        const isoform_ids = filteredData.map(t => t.isoform);
+        
+        const ucscUrl = new URL(`${ucscHost}/cgi-bin/hgTracks`);
+        ucscUrl.searchParams.set('hgsid', hgsid);
+
+        if (isoform_ids.length === 0) {
+            ucscUrl.searchParams.set(trackName, 'hide');
+        } else {
+            const filterText = isoform_ids.join(' ');
+            if (filterText.length > 2000) {
+                alert(`The filter is too broad (${isoform_ids.length} transcripts), resulting in a URL that is too long for the browser. Please narrow your filtering criteria.`);
+                return;
             }
-        });
-        applyFilters();
+            ucscUrl.searchParams.set(`hg_t_${trackName}_filter`, 'on');
+            ucscUrl.searchParams.set(`hg_t_${trackName}_filter_text`, filterText);
+        }
+        
+        window.top.location.href = ucscUrl.toString();
+    }
+
+    function resetViewInUCSC() {
+        if (!hgsid) {
+            alert('This page must be opened from the UCSC Genome Browser to reset the view.\n\n(hgsid parameter not found in URL)');
+            return;
+        }
+
+        const ucscUrl = new URL(`${ucscHost}/cgi-bin/hgTracks`);
+        ucscUrl.searchParams.set('hgsid', hgsid);
+        ucscUrl.searchParams.set(`hg_t_${trackName}_filter`, 'off');
+        ucscUrl.searchParams.set(trackName, 'dense'); // Ensure track is visible
+        
+        window.top.location.href = ucscUrl.toString();
     }
     
-    document.getElementById('apply-filters').addEventListener('click', applyFilters);
-    document.getElementById('reset-filters').addEventListener('click', resetFilters);
+    document.getElementById('preview-filters').addEventListener('click', previewFilters);
+    document.getElementById('apply-filters-ucsc').addEventListener('click', applyFiltersToUCSC);
+    document.getElementById('reset-filters-ucsc').addEventListener('click', resetViewInUCSC);
 
     // Initial load
     document.addEventListener('DOMContentLoaded', () => {
-        applyFilters();
+        resultsCount.textContent = `Showing ${transcripts.length} of ${transcripts.length} transcripts.`;
+        renderTable(transcripts);
     });
 </script>
 </body>
