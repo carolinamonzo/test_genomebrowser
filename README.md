@@ -4,7 +4,7 @@ This hub displays SQANTI3 transcriptome analysis results for the hg38 genome ass
 
 ## 🔍 Advanced Filtering
 
-**This hub uses the bigBed 12+8 format with native UCSC filters.**
+**This hub uses the bigBed 12+44 format with native UCSC filters.**
 
 You can filter transcripts by:
 - **Structural Category:** FSM, ISM, NIC, NNC, genic, antisense, fusion, intergenic, genic_intron
