@@ -17,9 +17,10 @@ itemRgb on
 color 107,174,214
 priority 1
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
-searchTrix https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38/trix.ix
+searchIndex name
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
+searchTrix trix.ix
 
 track hg38_sqanti3_intergenic
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_intergenic.bb
