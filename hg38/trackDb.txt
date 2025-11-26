@@ -20,7 +20,6 @@ html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg3
 searchIndex name
 filterByRange.blockCount 0:100
 filterLabel.blockCount Number of exons
-searchTrix https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38/trix.ix
 
 track hg38_sqanti3_intergenic
 bigDataUrl https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_intergenic.bb

@@ -1,3 +1,4 @@
 genome hg38
 trackDb https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38/trackDb.txt
 groups https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38/groups.txt
+searchTrix https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38/trix.ix
