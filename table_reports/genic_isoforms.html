@@ -55,6 +55,13 @@
             font-size: 0.8em;
         }
         .dataTables_wrapper { margin-top: 20px; }
+        /* Row selection styling */
+        table.dataTable tbody tr.selected {
+            background-color: #b3d4fc !important;
+        }
+        table.dataTable tbody tr:hover {
+            cursor: pointer;
+        }
     </style>
 
     <!-- jQuery and DataTables JS -->
@@ -85,6 +92,14 @@
                 <li><strong>Numeric Columns (e.g., length, exons):</strong> Use ranges like <code>100:1000</code> (values between 100 and 1000), <code>100:</code> (>100), or <code>:1000</code> (<1000). Single numbers perform an exact match.</li>
                 <li><strong>Dropdowns:</strong> Select a value to filter for an exact match.</li>
                 <li><strong>Text Columns:</strong> Type to search for substrings (case-insensitive).</li>
+            </ul>
+            <hr style="border-top: 1px solid #dee2e6; margin: 15px 0;">
+            <p><strong>Generate Trix String (for UCSC Genome Browser search):</strong></p>
+            <ul style="margin-bottom: 5px; padding-left: 20px;">
+                <li>Use dropdown filters and click "Generate Trix String" to get a search based on your filter criteria.</li>
+                <li><em>Note:</em> Range filters (e.g., <code>100:1000</code>) are not supported by Trix and will be ignored, only exact numeric matches are supported.</li>
+                <li>Search terms use underscore format: <code>structural_category_intergenic</code>, <code>strand_plus</code>, <code>coding_coding</code></li>
+                <li>Click on a row to select it (highlighted in blue), then click "Generate Trix String" to get search terms for that specific isoform.</li>
             </ul>
         </div>
 
@@ -243,29 +258,69 @@
                     {
                         text: 'Generate Trix String',
                         action: function ( e, dt, node, config ) {
-                            var queryParts = [];
-                            var api = dt;
-                            var settings = api.settings()[0];
+                            // Check if a row is selected
+                            var selectedData = dt.rows('.selected').data();
                             
-                            api.columns().every(function(i) {
-                                var colName = settings.aoColumns[i].data;
-                                // Target the correct input (handling scrolling duplicates)
-                                var input = $('.dataTables_scrollHead .filters [data-index="'+i+'"]');
-                                if (input.length === 0) {
-                                    input = $('.filters [data-index="'+i+'"]');
+                            if (selectedData.length > 0) {
+                                // Generate Trix string from selected row
+                                var rowData = selectedData[0];
+                                var queryParts = [];
+                                
+                                // Columns to include in the Trix string (categorical/useful for searching)
+                                var trixCols = ['structural_category', 'subcategory', 'strand', 'coding', 
+                                                'associated_gene', 'FSM_class', 'RTS_stage', 'all_canonical',
+                                                'bite', 'predicted_NMD', 'within_CAGE_peak', 'polyA_motif_found'];
+                                
+                                trixCols.forEach(function(col) {
+                                    if (rowData[col] !== undefined && rowData[col] !== '' && rowData[col] !== null) {
+                                        var val = String(rowData[col]);
+                                        // Convert strand symbols to words (ixIxx strips + and -)
+                                        if (val === '+') val = 'plus';
+                                        else if (val === '-') val = 'minus';
+                                        queryParts.push(col + '_' + val);
+                                    }
+                                });
+                                
+                                // Also add the isoform name for direct search
+                                var isoformCol = 'isoform';
+                                if (rowData[isoformCol]) {
+                                    queryParts.unshift(rowData[isoformCol]);
                                 }
                                 
-                                var val = input.val();
-                                if (val) {
-                                    queryParts.push(colName + ":" + val);
-                                }
-                            });
-                            
-                            var searchString = queryParts.join(" ");
-                            if (!searchString) {
-                                alert("No filters active.");
+                                var searchString = queryParts.join(" ");
+                                prompt("Trix search string for selected isoform:\n(You can use just the isoform ID, or any combination of the terms below)", searchString);
                             } else {
-                                prompt("Copy this search string for UCSC Genome Browser:", searchString);
+                                // Generate from active filters (non-range values only)
+                                var queryParts = [];
+                                var api = dt;
+                                var settings = api.settings()[0];
+                                
+                                api.columns().every(function(i) {
+                                    var colName = settings.aoColumns[i].data;
+                                    var input = $('.dataTables_scrollHead .filters [data-index="'+i+'"]');
+                                    if (input.length === 0) {
+                                        input = $('.filters [data-index="'+i+'"]');
+                                    }
+                                    
+                                    var val = input.val();
+                                    if (val) {
+                                        // Skip range filters (contain :) - Trix doesn't support ranges
+                                        if (val.indexOf(':') !== -1) {
+                                            return; // Skip this column
+                                        }
+                                        // Convert strand symbols
+                                        if (val === '+') val = 'plus';
+                                        else if (val === '-') val = 'minus';
+                                        // Use underscore format for Trix
+                                        queryParts.push(colName + '_' + val);
+                                    }
+                                });
+                                
+                                if (queryParts.length === 0) {
+                                    alert("No row selected and no valid filters active.\n\nTip: Click on a row to select it, then click 'Generate Trix String' to get search terms for that isoform.");
+                                } else {
+                                    prompt("Trix search string from filters:\n(Note: Range filters are ignored - Trix doesn't support ranges)", queryParts.join(" "));
+                                }
                             }
                         }
                     },
@@ -281,6 +336,16 @@
                 ],
                 initComplete: function () {
                     // No manual event binding here anymore, we use delegated events below
+                }
+            });
+            
+            // Row click handler for selection (toggle)
+            $('#isoformTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
                 }
             });
             
