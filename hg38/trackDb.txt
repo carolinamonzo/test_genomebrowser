@@ -153,7 +153,6 @@ filterLabel.blockCount Number of exons (from BED)
 visibility full
 group transcripts
 itemRgb on
-color 107,174,214
 priority 1
 html https://raw.githubusercontent.com/carolinamonzo/test_genomebrowser/main/hg38_sqanti3_track.html
 searchIndex name
