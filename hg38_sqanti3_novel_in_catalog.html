@@ -5,28 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hg38 SQANTI3 novel_in_catalog Transcripts</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f8f9fa; color: #212529; }
-        h1 { color: #343a40; }
-        #container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        p { margin-bottom: 1em; }
-        strong { color: #343a40; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { color: #333; border-bottom: 2px solid #78C679; padding-bottom: 10px; }
+        h2 { color: #495057; margin-top: 25px; }
+        h3 { color: #6c757d; margin-top: 20px; }
+        code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: left; }
+        th { background-color: #e9ecef; font-weight: 600; }
+        .filter-values { font-family: monospace; font-size: 0.85em; color: #495057; }
+        .tip { background-color: #d1ecf1; border-left: 4px solid #17a2b8; padding: 10px 15px; margin: 15px 0; border-radius: 0 4px 4px 0; }
+        .category-badge { display: inline-block; background-color: #78C679; color: white; padding: 5px 12px; border-radius: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
-<div id="container">
-    <h1>SQANTI3 Transcripts: novel_in_catalog</h1>
-    <p>
-        This track contains <strong>744</strong> transcripts from the <strong>novel_in_catalog</strong> 
-        structural category for the <strong>hg38</strong> genome assembly.
-    </p>
-    <p>
-        To filter these transcripts, right-click on the track in the main Genome Browser window and select "Filter". 
-        You can then filter by various attributes such as exon count, length, coding status, and more, using the controls provided by the browser.
-    </p>
-    <p>
-        Full classification data is available in the main hub description page.
-    </p>
+<div class="container">
+    <h1>SQANTI3 Transcripts: <span class="category-badge">novel_in_catalog</span></h1>
+    <p>This track contains <strong>744</strong> transcripts classified as <strong>novel_in_catalog</strong> for the <strong>hg38</strong> genome assembly.</p>
+    
+    <h2>How to Filter</h2>
+    <div class="tip">
+        <strong>Tip:</strong> Right-click on the track and select "Configure" to access all filters. 
+        Use <code>*</code> as a wildcard in text filters (e.g., <code>mono*</code> matches mono-exon).
+    </div>
+    
+    <h2>Text Filter Options</h2>
+    <p>The following filters accept text input. Values shown are specific to this category:</p>
+    
+    <table>
+    <tr><th>Filter</th><th>Available Values</th><th>Count</th></tr>
+    <tr><td><strong>Structural Category</strong></td><td class="filter-values"><code>novel_in_catalog</code> (744)</td><td>744</td></tr>
+    <tr><td><strong>Subcategory</strong></td><td class="filter-values"><code>intron_retention</code> (336), <code>combination_of_known_splicesites</code> (281), <code>combination_of_known_junctions</code> (83), <code>mono-exon_by_intron_retention</code> (44)</td><td>744</td></tr>
+    <tr><td><strong>Coding Status</strong></td><td class="filter-values"><code>coding</code> (662), <code>non_coding</code> (82)</td><td>744</td></tr>
+    <tr><td><strong>FSM Class</strong></td><td class="filter-values"><code>C</code> (682), <code>B</code> (53), <code>A</code> (9)</td><td>744</td></tr>
+    <tr><td><strong>Strand</strong></td><td class="filter-values"><code>-</code> (394), <code>+</code> (350)</td><td>744</td></tr>
+    <tr><td><strong>All Canonical Splice Sites</strong></td><td class="filter-values"><code>canonical</code> (697), <code>non_canonical</code> (3)</td><td>744</td></tr>
+    <tr><td><strong>RTS Stage</strong></td><td class="filter-values"><code>False</code> (605), <code>True</code> (139)</td><td>744</td></tr>
+    <tr><td><strong>BITE Status</strong></td><td class="filter-values"><code>False</code> (700)</td><td>744</td></tr>
+    <tr><td><strong>Predicted NMD</strong></td><td class="filter-values"><code>False</code> (432), <code>True</code> (215)</td><td>744</td></tr>
+    <tr><td><strong>Within CAGE Peak</strong></td><td class="filter-values"><code>True</code> (585), <code>False</code> (159)</td><td>744</td></tr>
+    <tr><td><strong>PolyA Motif Found</strong></td><td class="filter-values"><code>True</code> (594), <code>False</code> (150)</td><td>744</td></tr>
+    </table>
+    <h3>Gene and Transcript Filters</h3>
+    <ul>
+    <li><strong>associated_gene</strong>: 216 unique genes. Use gene names like <code>BRCA1</code> or Ensembl IDs like <code>ENSG00000012048*</code></li>
+    <li><strong>associated_transcript</strong>: 1 unique transcripts. Use transcript IDs like <code>ENST00000357654*</code> or <code>novel</code></li>
+    </ul>
+    
+    <h2>Numeric Range Filters</h2>
+    <p>These filters allow you to set minimum and maximum values:</p>
+    <ul>
+        <li><strong>length</strong>: Transcript length in base pairs</li>
+        <li><strong>exons</strong>: Number of exons</li>
+        <li><strong>iso_exp</strong>: Isoform expression (TPM)</li>
+        <li><strong>FL</strong>: Full-length read count</li>
+        <li><strong>min_cov</strong>: Minimum junction coverage</li>
+        <li><strong>ORF_length</strong>: ORF length in amino acids</li>
+        <li><strong>dist_to_CAGE_peak</strong>: Distance to CAGE peak</li>
+        <li><strong>dist_to_polyA_site</strong>: Distance to polyA site</li>
+    </ul>
 </div>
-
 </body>
 </html>
