@@ -11,8 +11,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category antisense,full-splice_match,fusion,genic,genic_intron,incomplete-splice_match,intergenic,novel_in_catalog,novel_not_in_catalog
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -44,14 +43,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory 3prime_fragment,5prime_fragment,alternative_3end,alternative_3end5end,alternative_5end,at_least_one_novel_splicesite,combination_of_known_junctions,combination_of_known_splicesites,internal_fragment,intron_retention,mono-exon,mono-exon_by_intron_retention,multi-exon,reference_match
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -80,8 +76,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False,True
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -95,11 +90,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -117,8 +110,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -128,8 +120,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -139,8 +130,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -175,8 +165,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category intergenic
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -208,14 +197,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -244,8 +230,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False,True
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -259,11 +244,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -281,8 +264,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -292,8 +274,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -303,8 +284,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -333,8 +313,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category novel_not_in_catalog
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -366,14 +345,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory at_least_one_novel_splicesite,intron_retention
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -402,8 +378,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False,True
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -417,11 +392,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -439,8 +412,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -450,8 +422,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -461,8 +432,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -491,8 +461,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category antisense
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -524,14 +493,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -560,8 +526,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False,True
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -575,11 +540,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -597,8 +560,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -608,8 +570,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -619,8 +580,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -649,8 +609,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category genic_intron
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -682,14 +641,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -718,8 +674,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -733,11 +688,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -766,8 +719,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -777,8 +729,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -807,8 +758,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category fusion
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -840,14 +790,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory intron_retention,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -876,8 +823,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False,True
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -891,11 +837,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -913,8 +857,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -924,8 +867,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -935,8 +877,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -965,8 +906,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category novel_in_catalog
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -998,14 +938,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory combination_of_known_junctions,combination_of_known_splicesites,intron_retention,mono-exon_by_intron_retention
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -1034,8 +971,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -1049,11 +985,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -1071,8 +1005,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -1082,8 +1015,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1093,8 +1025,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1123,8 +1054,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category incomplete-splice_match
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -1156,14 +1086,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory 3prime_fragment,5prime_fragment,internal_fragment,intron_retention,mono-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -1192,8 +1119,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -1207,11 +1133,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -1229,8 +1153,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -1240,8 +1163,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1251,8 +1173,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1281,8 +1202,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category full-splice_match
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -1314,14 +1234,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory alternative_3end,alternative_3end5end,alternative_5end,mono-exon,reference_match
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -1350,8 +1267,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -1365,11 +1281,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -1387,8 +1301,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -1398,8 +1311,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1409,8 +1321,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1439,8 +1350,7 @@ filter.exons 0:200
 filterByRange.exons on
 filterLimits.exons 0:200
 filterLabel.exons Number of exons
-filterText.structural_category *
-filterType.structural_category wildcard
+filterValues.structural_category genic
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -1472,14 +1382,11 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterText.subcategory *
-filterType.subcategory wildcard
+filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterText.RTS_stage *
-filterType.RTS_stage wildcard
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
-filterText.all_canonical *
-filterType.all_canonical wildcard
+filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -1508,8 +1415,7 @@ filter.n_indels_junc 0:100
 filterByRange.n_indels_junc on
 filterLimits.n_indels_junc 0:100
 filterLabel.n_indels_junc Number of indels at junctions
-filterText.bite *
-filterType.bite wildcard
+filterValues.bite False
 filterLabel.bite BITE status
 filter.iso_exp 0:100000
 filterByRange.iso_exp on
@@ -1523,11 +1429,9 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterText.FSM_class *
-filterType.FSM_class wildcard
+filterValues.FSM_class A,B,C
 filterLabel.FSM_class FSM class (A, B, C, D)
-filterText.coding *
-filterType.coding wildcard
+filterValues.coding coding,non_coding
 filterLabel.coding Coding status (coding, non_coding)
 filter.ORF_length 0:50000
 filterByRange.ORF_length on
@@ -1545,8 +1449,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterText.predicted_NMD *
-filterType.predicted_NMD wildcard
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -1556,8 +1459,7 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterText.within_CAGE_peak *
-filterType.within_CAGE_peak wildcard
+filterValues.within_CAGE_peak False,True
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1567,8 +1469,7 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterText.polyA_motif_found *
-filterType.polyA_motif_found wildcard
+filterValues.polyA_motif_found False,True
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
