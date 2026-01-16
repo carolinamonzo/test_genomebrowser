@@ -154,7 +154,7 @@ shortLabel STAR Junctions
 longLabel STAR splice junctions (SJ.out.tab)
 type bigBed 6
 visibility full
-group junctions
+group validation
 priority 2
 html hg38_star_sj_track.html
 
