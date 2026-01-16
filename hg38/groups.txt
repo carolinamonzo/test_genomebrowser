@@ -7,3 +7,8 @@ name junctions
 label Splice Junctions
 priority 2
 defaultIsClosed 0
+
+name validation
+label Validation Data
+priority 3
+defaultIsClosed 0

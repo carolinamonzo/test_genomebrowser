@@ -158,6 +158,17 @@ group junctions
 priority 2
 html hg38_star_sj_track.html
 
+track hg38_cage_peaks
+bigDataUrl hg38_cage_peaks.bb
+shortLabel CAGE Peaks
+longLabel CAGE Peaks (TSS Validation)
+type bigBed
+visibility dense
+group validation
+priority 3
+color 0,128,0
+html hg38_cage_peaks_track.html
+
 track hg38_sqanti3_intergenic
 bigDataUrl hg38_sqanti3_intergenic.bb
 shortLabel SQANTI3 intergenic
