@@ -1,0 +1,39 @@
+# Test trackDb with MINIMAL filters to test decorators
+# Use this to replace trackDb.txt temporarily
+
+track hg38_sqanti3
+bigDataUrl hg38_sqanti3.bb
+shortLabel SQANTI3 Transcripts
+longLabel SQANTI3 Transcriptome Analysis Results
+type bigBed 12 +
+visibility pack
+group transcripts
+itemRgb on
+priority 1
+html hg38_sqanti3_track.html
+searchIndex name
+searchTrix trix.ix
+
+# Decorator configuration for SQANTI3 features
+decorator.default.bigDataUrl hg38_sqanti3_decorators.bb
+decorator.default.blockMode Adjacent
+decorator.default.glyphMode Show
+
+# Interactive filters
+decorator.default.filterLabel.annotType Annotation Type
+decorator.default.filterValues.annotType junction,artifact,validation,prediction
+decorator.default.filterLabel.category Category
+decorator.default.filterValues.category novel,RT_switch,non_canonical,novel_BITE,CAGE_validated,polyA_validated,NMD_target
+decorator.default.filterValuesDefault.category novel,RT_switch,non_canonical,CAGE_validated,polyA_validated,NMD_target
+decorator.default.filterLabel.confidence Confidence
+decorator.default.filterValues.confidence high,medium,low
+decorator.default.filterValuesDefault.confidence high,medium
+
+# Mouseover tooltip
+decorator.default.mouseOver \
+    <b>${category}</b><br> \
+    ${description}<br> \
+    Position: ${chrom}:${chromStart}<br> \
+    Type: ${featType}<br> \
+    Confidence: ${confidence}<br> \
+    Evidence: ${supportingData}
