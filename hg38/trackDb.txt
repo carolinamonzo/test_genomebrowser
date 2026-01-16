@@ -1,5 +1,5 @@
-# Test trackDb with MINIMAL filters to test decorators
-# Use this to replace trackDb.txt temporarily
+# Simplified trackDb for testing decorators
+# Keeps only essential filters to reduce complexity
 
 track hg38_sqanti3
 bigDataUrl hg38_sqanti3.bb
@@ -14,12 +14,22 @@ html hg38_sqanti3_track.html
 searchIndex name
 searchTrix trix.ix
 
+# Keep only a few essential filters
+filterValues.structural_category antisense,full-splice_match,fusion,genic,genic_intron,incomplete-splice_match,intergenic,novel_in_catalog,novel_not_in_catalog
+filterLabel.structural_category Structural category
+filterValues.coding coding,non_coding
+filterLabel.coding Coding status
+filter.length 0:100000
+filterByRange.length on
+filterLimits.length 0:100000
+filterLabel.length Transcript length
+
 # Decorator configuration for SQANTI3 features
 decorator.default.bigDataUrl hg38_sqanti3_decorators.bb
 decorator.default.blockMode Adjacent
 decorator.default.glyphMode Show
 
-# Interactive filters
+# Decorator filters
 decorator.default.filterLabel.annotType Annotation Type
 decorator.default.filterValues.annotType junction,artifact,validation,prediction
 decorator.default.filterLabel.category Category
