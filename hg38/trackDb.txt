@@ -2,7 +2,7 @@ track hg38_sqanti3
 bigDataUrl hg38_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
-type bigBed 12 + 44
+type bigBed 12 + 52
 filter.length 0:100000
 filterByRange.length on
 filterLimits.length 0:100000
@@ -120,7 +120,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -130,7 +131,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -148,54 +150,36 @@ html hg38_sqanti3_track.html
 searchIndex name
 searchTrix trix.ix
 
-track hg38_star_sj
-bigDataUrl hg38_star_sj.bb
-shortLabel STAR Junctions
-longLabel STAR splice junctions (SJ.out.tab)
-type bigBed 6
-visibility full
-group validation
-priority 2
-html hg38_star_sj_track.html
+# Decorator configuration for SQANTI3 features
+decorator.default.bigDataUrl hg38_sqanti3_decorators.bb
+decorator.default.blockMode Adjacent
+decorator.default.glyphMode Show
 
-track hg38_cage_peaks
-bigDataUrl hg38_cage_peaks.bb
-shortLabel CAGE Peaks
-longLabel CAGE Peaks (TSS Validation)
-type bigBed
-visibility dense
-group validation
-priority 3
-color 0,128,0
-html hg38_cage_peaks_track.html
+# Interactive filters
+decorator.default.filterLabel.annotType Annotation Type
+decorator.default.filterValues.annotType junction,artifact,validation,prediction
+decorator.default.filterLabel.category Category
+decorator.default.filterValues.category novel,RT_switch,non_canonical,novel_BITE,CAGE_validated,polyA_validated,NMD_target
+decorator.default.filterValuesDefault.category novel,RT_switch,non_canonical,CAGE_validated,polyA_validated,NMD_target
+decorator.default.filterLabel.confidence Confidence
+decorator.default.filterValues.confidence high,medium,low
+decorator.default.filterValuesDefault.confidence high,medium
 
-track hg38_polya_peaks
-bigDataUrl hg38_polya_peaks.bb
-shortLabel PolyA Peaks
-longLabel PolyA Site Peaks (TTS Validation)
-type bigBed
-visibility dense
-group validation
-priority 4
-color 200,0,0
-html hg38_polya_peaks_track.html
+# Mouseover tooltip
+decorator.default.mouseOver \
+    <b>${category}</b><br> \
+    ${description}<br> \
+    Position: ${chrom}:${chromStart}<br> \
+    Type: ${featType}<br> \
+    Confidence: ${confidence}<br> \
+    Evidence: ${supportingData}
 
-track hg38_reference
-bigDataUrl hg38_reference.bb
-shortLabel Reference
-longLabel Reference Genome Annotation
-type bigBed 12
-visibility pack
-group validation
-priority 5
-color 70,70,70
-html hg38_reference_track.html
 
 track hg38_sqanti3_intergenic
 bigDataUrl hg38_sqanti3_intergenic.bb
 shortLabel SQANTI3 intergenic
 longLabel SQANTI3 intergenic transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -243,9 +227,9 @@ filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
 filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterValues.RTS_stage False,True
+filterValues.RTS_stage False
 filterLabel.RTS_stage RTS stage
-filterValues.all_canonical canonical,non_canonical
+filterValues.all_canonical canonical
 filterLabel.all_canonical All canonical splice sites
 filter.min_sample_cov 0:10000
 filterByRange.min_sample_cov on
@@ -308,7 +292,8 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterValues.predicted_NMD False,True
+filterText.predicted_NMD *
+filterType.predicted_NMD wildcard
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -318,7 +303,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -328,7 +314,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -343,7 +330,7 @@ track hg38_sqanti3_novel_not_in_catalog
 bigDataUrl hg38_sqanti3_novel_not_in_catalog.bb
 shortLabel SQANTI3 novel_not_in_catalog
 longLabel SQANTI3 novel_not_in_catalog transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -466,7 +453,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -476,7 +464,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -491,7 +480,7 @@ track hg38_sqanti3_antisense
 bigDataUrl hg38_sqanti3_antisense.bb
 shortLabel SQANTI3 antisense
 longLabel SQANTI3 antisense transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -539,7 +528,7 @@ filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
 filterValues.subcategory mono-exon,multi-exon
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
-filterValues.RTS_stage False
+filterValues.RTS_stage False,True
 filterLabel.RTS_stage RTS stage
 filterValues.all_canonical canonical,non_canonical
 filterLabel.all_canonical All canonical splice sites
@@ -604,7 +593,7 @@ filter.CDS_end 0:100000
 filterByRange.CDS_end on
 filterLimits.CDS_end 0:100000
 filterLabel.CDS_end CDS end position
-filterValues.predicted_NMD False
+filterValues.predicted_NMD False,True
 filterLabel.predicted_NMD Predicted NMD
 filter.perc_A_downstream_TTS 0:100
 filterByRange.perc_A_downstream_TTS on
@@ -614,7 +603,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -624,7 +614,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -639,7 +630,7 @@ track hg38_sqanti3_genic_intron
 bigDataUrl hg38_sqanti3_genic_intron.bb
 shortLabel SQANTI3 genic_intron
 longLabel SQANTI3 genic_intron transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -763,7 +754,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -773,7 +765,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -788,7 +781,7 @@ track hg38_sqanti3_fusion
 bigDataUrl hg38_sqanti3_fusion.bb
 shortLabel SQANTI3 fusion
 longLabel SQANTI3 fusion transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -911,7 +904,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -921,7 +915,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -936,7 +931,7 @@ track hg38_sqanti3_novel_in_catalog
 bigDataUrl hg38_sqanti3_novel_in_catalog.bb
 shortLabel SQANTI3 novel_in_catalog
 longLabel SQANTI3 novel_in_catalog transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -1059,7 +1054,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1069,7 +1065,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1084,7 +1081,7 @@ track hg38_sqanti3_incomplete-splice_match
 bigDataUrl hg38_sqanti3_incomplete-splice_match.bb
 shortLabel SQANTI3 incomplete-splice_match
 longLabel SQANTI3 incomplete-splice_match transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -1207,7 +1204,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1217,7 +1215,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1232,7 +1231,7 @@ track hg38_sqanti3_full-splice_match
 bigDataUrl hg38_sqanti3_full-splice_match.bb
 shortLabel SQANTI3 full-splice_match
 longLabel SQANTI3 full-splice_match transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -1355,7 +1354,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1365,7 +1365,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on
@@ -1380,7 +1381,7 @@ track hg38_sqanti3_genic
 bigDataUrl hg38_sqanti3_genic.bb
 shortLabel SQANTI3 genic
 longLabel SQANTI3 genic transcripts
-type bigBed 12 + 44
+type bigBed 12 + 52
 visibility full
 group transcripts
 itemRgb on
@@ -1503,7 +1504,8 @@ filter.dist_to_CAGE_peak -10000:10000
 filterByRange.dist_to_CAGE_peak on
 filterLimits.dist_to_CAGE_peak -10000:10000
 filterLabel.dist_to_CAGE_peak Distance to CAGE peak
-filterValues.within_CAGE_peak False,True
+filterText.within_CAGE_peak *
+filterType.within_CAGE_peak wildcard
 filterLabel.within_CAGE_peak Within CAGE peak
 filter.dist_to_polyA_site -10000:10000
 filterByRange.dist_to_polyA_site on
@@ -1513,7 +1515,8 @@ filter.polyA_dist -1000:1000
 filterByRange.polyA_dist on
 filterLimits.polyA_dist -1000:1000
 filterLabel.polyA_dist PolyA distance
-filterValues.polyA_motif_found False,True
+filterText.polyA_motif_found *
+filterType.polyA_motif_found wildcard
 filterLabel.polyA_motif_found PolyA motif found
 filter.ratio_TSS 0:10
 filterByRange.ratio_TSS on

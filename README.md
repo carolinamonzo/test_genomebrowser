@@ -20,7 +20,7 @@ To use this hub in the UCSC Genome Browser:
 
 ## 🔍 Advanced Filtering
 
-**This hub uses the bigBed 12+44 format with native UCSC filters.**
+**This hub uses the bigBed 12+52 format with native UCSC filters.**
 
 You can filter transcripts using dropdown menus and range sliders:
 - **Structural Category:** full-splice_match, incomplete-splice_match, novel_in_catalog, novel_not_in_catalog, genic, antisense, fusion, intergenic, genic_intron
