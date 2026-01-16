@@ -180,6 +180,17 @@ priority 4
 color 200,0,0
 html hg38_polya_peaks_track.html
 
+track hg38_reference
+bigDataUrl hg38_reference.bb
+shortLabel Reference
+longLabel Reference Genome Annotation
+type bigBed 12
+visibility pack
+group validation
+priority 5
+color 70,70,70
+html hg38_reference_track.html
+
 track hg38_sqanti3_intergenic
 bigDataUrl hg38_sqanti3_intergenic.bb
 shortLabel SQANTI3 intergenic
