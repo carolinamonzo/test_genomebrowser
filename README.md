@@ -23,7 +23,6 @@ To use this hub in the UCSC Genome Browser:
 **This hub uses the bigBed 12+44 format with native UCSC filters.**
 
 You can filter transcripts using:
-- **Isoform names (text box):** Default wildcard `*` shows all. For a list: switch to regexp, paste pipe-separated IDs (e.g., `PB[.]1[.]1|PB[.]2[.]3`). Use "Generate Filter String" in the HTML tables.
 - **Structural Category:** full-splice_match, incomplete-splice_match, novel_in_catalog, novel_not_in_catalog, genic, antisense, fusion, intergenic, genic_intron
 - **Subcategory:** mono-exon, multi-exon, 3prime_fragment, 5prime_fragment, reference_match, etc.
 - **Coding Status:** coding, non_coding
@@ -37,6 +36,10 @@ You can filter transcripts using:
 ## 🔎 Trix Search
 
 Use the search box to find isoforms by attribute. **Search terms use underscores** (e.g., `structural_category_full_splice_match`, `strand_plus`). Category names like `full-splice_match` are indexed as `full_splice_match` so you can search without remembering hyphens.
+
+## 👁 Viewing Only Specific Isoforms
+
+Use **My Data → Table Browser**: select this hub and the SQANTI3 track, add a filter on the `name` field with a pipe-separated list of isoform IDs (e.g., `PB.137344.2|PB.150534.3`), then create a custom track. To get the list: use the Interactive HTML tables (generated with `--tables`), select rows, and click **Generate Filter String**.
 
 ## 🎨 Color Legend
 
