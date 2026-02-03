@@ -1,7 +1,7 @@
-# example_output_hg38_SQANTI3_Hub
+# example_output_filter_hg38_SQANTI3_Hub
 
 This hub displays SQANTI3 transcriptome analysis results for the hg38 genome assembly.
-This hub visualizes data from the SQANTI3 classification analysis for the example_output_hg38_SQANTI3_Hub sample.
+This hub visualizes data from the SQANTI3 classification analysis for the example_output_filter_hg38_SQANTI3_Hub sample.
 
 ## 🚀 Usage Instructions
 
@@ -22,7 +22,8 @@ To use this hub in the UCSC Genome Browser:
 
 **This hub uses the bigBed 12+44 format with native UCSC filters.**
 
-You can filter transcripts using dropdown menus and range sliders:
+You can filter transcripts using:
+- **Isoform names (text box):** Paste a list of isoform IDs. Use regexp mode and separate with `|` (e.g., `PB.1.1|PB.2.3|PB.5.1`). For names with dots, escape with `\.` or use `[.]` (e.g., `PB\.1\.1|PB\.2\.3`).
 - **Structural Category:** full-splice_match, incomplete-splice_match, novel_in_catalog, novel_not_in_catalog, genic, antisense, fusion, intergenic, genic_intron
 - **Subcategory:** mono-exon, multi-exon, 3prime_fragment, 5prime_fragment, reference_match, etc.
 - **Coding Status:** coding, non_coding
@@ -32,6 +33,10 @@ You can filter transcripts using dropdown menus and range sliders:
 - **Expression:** Range-based filtering for isoform expression
 
 *Right-click on the track and select "Configure" or "Filter" to access these controls.*
+
+## 🔎 Trix Search
+
+Use the search box to find isoforms by attribute. **Search terms use underscores** (e.g., `structural_category_full_splice_match`, `strand_plus`). Category names like `full-splice_match` are indexed as `full_splice_match` so you can search without remembering hyphens.
 
 ## 🎨 Color Legend
 

@@ -290,13 +290,11 @@
                                     var normalizedCategory = normalizeForTrix(currentCategory);
                                     if (normalizedCategory) {
                                         queryParts.push('structural_category_' + normalizedCategory);
-                                        queryParts.push(normalizedCategory);
                                     }
                                 } else if (rowData['structural_category']) {
                                     var normalizedCategory = normalizeForTrix(rowData['structural_category']);
                                     if (normalizedCategory) {
                                         queryParts.push('structural_category_' + normalizedCategory);
-                                        queryParts.push(normalizedCategory);
                                     }
                                 }
                                 
@@ -311,9 +309,6 @@
                                     if (value !== undefined && value !== '' && value !== null) {
                                         var normalizedCol = normalizeForTrix(col);
                                         var normalizedVal = normalizeForTrix(value);
-                                        if (normalizedVal) {
-                                            queryParts.push(normalizedVal);
-                                        }
                                         if (normalizedCol && normalizedVal) {
                                             queryParts.push(normalizedCol + '_' + normalizedVal);
                                         }
@@ -348,7 +343,6 @@
                                     var normalizedCategory = normalizeForTrix(currentCategory);
                                     if (normalizedCategory) {
                                         queryParts.push('structural_category_' + normalizedCategory);
-                                        queryParts.push(normalizedCategory);
                                     }
                                 }
                                 
@@ -370,9 +364,6 @@
                                         }
                                         var normalizedCol = normalizeForTrix(colName);
                                         var normalizedVal = normalizeForTrix(val);
-                                        if (normalizedVal) {
-                                            queryParts.push(normalizedVal);
-                                        }
                                         if (normalizedCol && normalizedVal) {
                                             queryParts.push(normalizedCol + '_' + normalizedVal);
                                         }
