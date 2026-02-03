@@ -37,11 +37,11 @@ You can filter transcripts using dropdown menus and range sliders:
 
 ### Standard Colors
 
-- **Full-splice Match (FSM):** #003049 (RGB 0, 48, 73)
-- **Incomplete-splice Match (ISM):** #D62828 (RGB 214, 40, 40)
-- **Novel In Catalog (NIC):** #ECF39E (RGB 236, 243, 158)
-- **Novel Not In Catalog (NNC):** #41B6C4 (RGB 65, 182, 196)
-- **Genic:** #E9967A (RGB 233, 150, 122)
+- **Full-splice Match (FSM):** #6BAED6 (RGB 107, 174, 214)
+- **Incomplete-splice Match (ISM):** #FC8D59 (RGB 252, 141, 89)
+- **Novel In Catalog (NIC):** #78C679 (RGB 120, 198, 121)
+- **Novel Not In Catalog (NNC):** #D62F4B (RGB 214, 47, 75)
+- **Genic:** #969696 (RGB 150, 150, 150)
 - **Antisense:** #66C2A4 (RGB 102, 194, 164)
 - **Fusion:** #DAA520 (RGB 218, 165, 32)
 - **Intergenic:** #E9967A (RGB 233, 150, 122)
@@ -49,11 +49,11 @@ You can filter transcripts using dropdown menus and range sliders:
 
 ### Highlight Colors (top FL isoform per group)
 
-- **Full-splice Match (FSM):** #001E2E (RGB 0, 30, 46)
-- **Incomplete-splice Match (ISM):** #881919 (RGB 136, 25, 25)
-- **Novel In Catalog (NIC):** #979B65 (RGB 151, 155, 101)
-- **Novel Not In Catalog (NNC):** #29747D (RGB 41, 116, 125)
-- **Genic:** #95604E (RGB 149, 96, 78)
+- **Full-splice Match (FSM):** #456F89 (RGB 69, 111, 137)
+- **Incomplete-splice Match (ISM):** #CA7147 (RGB 202, 113, 71)
+- **Novel In Catalog (NIC):** #4D7E4E (RGB 77, 126, 78)
+- **Novel Not In Catalog (NNC):** #98071F (RGB 152, 7, 31)
+- **Genic:** #606060 (RGB 96, 96, 96)
 - **Antisense:** #427C69 (RGB 66, 124, 105)
 - **Fusion:** #8B6A15 (RGB 139, 106, 21)
 - **Intergenic:** #95604E (RGB 149, 96, 78)
