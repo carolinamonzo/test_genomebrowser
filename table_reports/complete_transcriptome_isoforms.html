@@ -432,7 +432,8 @@
                         text: 'Generate Filter String',
                         action: function ( e, dt, node, config ) {
                             function escapeForRegexp(str) {
-                                return String(str).replace(/([.*+?^${}()|[\]\\])/g, '\\$1');
+                                // Use [.] for dots to avoid backslash issues in UCSC filter
+                                return String(str).replace(/\./g, '[.]');
                             }
                             var rows = dt.rows('.selected').length > 0 ? dt.rows('.selected') : dt.rows({search:'applied'});
                             var rowData = rows.data();
