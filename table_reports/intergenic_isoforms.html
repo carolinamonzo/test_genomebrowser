@@ -101,6 +101,11 @@
                 <li>Search terms automatically use underscores (e.g., <code>structural_category_full_splice_match</code>, <code>strand_plus</code>, <code>coding_coding</code>).</li>
                 <li>Click on a row to select it (highlighted in blue), then click "Generate Trix String" to get search terms for that specific isoform.</li>
             </ul>
+            <p><strong>Generate Filter String (for UCSC "Isoform names" filter):</strong></p>
+            <ul style="margin-bottom: 5px; padding-left: 20px;">
+                <li>Select rows (or apply filters to narrow the table), then click "Generate Filter String" to get a pipe-separated list of isoform IDs.</li>
+                <li>Copy and paste into the UCSC track filter "Isoform names" text box (use regexp mode) to display only those isoforms.</li>
+            </ul>
         </div>
 
         <p>Total transcripts: 41 | <a href="javascript:window.close();">Close Window</a></p>
@@ -381,6 +386,30 @@
 
                                 // queryParts always has at least structural_category now
                                 prompt("Trix search string from filters:\n(Note: Range filters are ignored - Trix doesn't support ranges)", uniqueParts.join(" "));
+                            }
+                        }
+                    },
+                    {
+                        text: 'Generate Filter String',
+                        action: function ( e, dt, node, config ) {
+                            function escapeForRegexp(str) {
+                                return String(str).replace(/([.*+?^${}()|[\]\\])/g, '\\$1');
+                            }
+                            var rows = dt.rows('.selected').length > 0 ? dt.rows('.selected') : dt.rows({search:'applied'});
+                            var rowData = rows.data();
+                            var isoformCol = 'isoform';
+                            var names = [];
+                            for (var i = 0; i < rowData.length; i++) {
+                                var name = rowData[i][isoformCol];
+                                if (name) {
+                                    names.push(escapeForRegexp(name));
+                                }
+                            }
+                            var filterString = names.join('|');
+                            if (filterString) {
+                                prompt("Isoform names for UCSC filter (regexp mode):\nPaste into the 'Isoform names' filter text box", filterString);
+                            } else {
+                                alert("No isoform names to copy. Select rows or apply filters first.");
                             }
                         }
                     },

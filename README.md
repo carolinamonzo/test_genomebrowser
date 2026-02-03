@@ -1,7 +1,7 @@
-# example_output_filter_hg38_SQANTI3_Hub
+# example_output_hg38_SQANTI3_Hub
 
 This hub displays SQANTI3 transcriptome analysis results for the hg38 genome assembly.
-This hub visualizes data from the SQANTI3 classification analysis for the example_output_filter_hg38_SQANTI3_Hub sample.
+This hub visualizes data from the SQANTI3 classification analysis for the example_output_hg38_SQANTI3_Hub sample.
 
 ## 🚀 Usage Instructions
 
