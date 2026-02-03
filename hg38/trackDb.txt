@@ -140,7 +140,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 visibility pack
@@ -298,7 +298,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -449,7 +449,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -600,7 +600,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -752,7 +752,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -903,7 +903,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -1054,7 +1054,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -1205,7 +1205,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -1356,7 +1356,7 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
 
@@ -1507,6 +1507,6 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name *
+filterText.name .*
 filterType.name regexp
 filterLabel.name Isoform names (regexp: name1|name2|name3)
