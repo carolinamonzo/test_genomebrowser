@@ -140,9 +140,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 visibility pack
 group transcripts
 itemRgb on
@@ -298,9 +298,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_novel_not_in_catalog
 bigDataUrl hg38_sqanti3_novel_not_in_catalog.bb
@@ -449,9 +449,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_antisense
 bigDataUrl hg38_sqanti3_antisense.bb
@@ -600,9 +600,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_genic_intron
 bigDataUrl hg38_sqanti3_genic_intron.bb
@@ -752,9 +752,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_fusion
 bigDataUrl hg38_sqanti3_fusion.bb
@@ -903,9 +903,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_novel_in_catalog
 bigDataUrl hg38_sqanti3_novel_in_catalog.bb
@@ -1054,9 +1054,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_incomplete-splice_match
 bigDataUrl hg38_sqanti3_incomplete-splice_match.bb
@@ -1205,9 +1205,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_full-splice_match
 bigDataUrl hg38_sqanti3_full-splice_match.bb
@@ -1356,9 +1356,9 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)
 
 track hg38_sqanti3_genic
 bigDataUrl hg38_sqanti3_genic.bb
@@ -1507,6 +1507,6 @@ filter.blockCount 0:200
 filterByRange.blockCount on
 filterLimits.blockCount 0:200
 filterLabel.blockCount Number of exons (from BED)
-filterText.name .*
-filterType.name regexp
-filterLabel.name Isoform names (regexp: name1|name2|name3)
+filterText.name *
+filterType.name wildcard
+filterLabel.name Isoform names (wildcard * = all; regexp for list)

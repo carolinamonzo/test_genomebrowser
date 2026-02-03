@@ -143,7 +143,7 @@
             <p><strong>Generate Filter String (for UCSC "Isoform names" filter):</strong></p>
             <ul style="margin-bottom: 5px; padding-left: 20px;">
                 <li>Select rows (or apply filters to narrow the table), then click "Generate Filter String" to get a pipe-separated list of isoform IDs.</li>
-                <li>Copy and paste into the UCSC track filter "Isoform names" text box (use regexp mode) to display only those isoforms.</li>
+                <li>Copy and paste into the UCSC track filter "Isoform names" text box. Switch to <strong>regexp</strong> mode first (default is wildcard).</li>
             </ul>
         </div>
 
@@ -446,7 +446,7 @@
                             }
                             var filterString = names.join('|');
                             if (filterString) {
-                                prompt("Isoform names for UCSC filter (regexp mode):\nPaste into the 'Isoform names' filter text box", filterString);
+                                prompt("Isoform names for UCSC filter:\nSwitch to regexp mode, then paste into the 'Isoform names' filter", filterString);
                             } else {
                                 alert("No isoform names to copy. Select rows or apply filters first.");
                             }
