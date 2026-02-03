@@ -39,7 +39,7 @@ Use the search box to find isoforms by attribute. **Search terms use underscores
 
 ## 👁 Viewing Only Specific Isoforms
 
-Use **My Data → Table Browser**: select this hub and the SQANTI3 track, add a filter on the `name` field with a pipe-separated list of isoform IDs (e.g., `PB.137344.2|PB.150534.3`), then create a custom track. To get the list: use the Interactive HTML tables (generated with `--tables`), select rows, and click **Generate Filter String**.
+Use **Tools → Table Browser**: select this hub (listed as `hub_<name>`) and the SQANTI3 track, keep the region set to *Genome*, choose **Identifiers → paste list**, and paste the newline-separated isoform IDs (e.g., generated via **Generate Filter String** in the HTML tables). Output as a custom track to view only those isoforms.
 
 ## 🎨 Color Legend
 

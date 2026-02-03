@@ -142,8 +142,8 @@
             </ul>
             <p><strong>Generate Filter String (for Table Browser):</strong></p>
             <ul style="margin-bottom: 5px; padding-left: 20px;">
-                <li>Select one or more rows (or apply filters to narrow the table), then click "Generate Filter String" to get a pipe-separated list of isoform IDs.</li>
-                <li>Copy the list and paste into UCSC Table Browser when filtering the track by the <code>name</code> field to create a custom track with only those isoforms.</li>
+                <li>Select one or more rows (or apply filters to narrow the table), then click "Generate Filter String" to get a newline-separated list of isoform IDs.</li>
+                <li>Copy the list and paste (one ID per line) into UCSC Table Browser when filtering the track by the <code>name</code> field to create a custom track with only those isoforms.</li>
             </ul>
         </div>
 
@@ -419,9 +419,9 @@
                                 var name = rowData[i][isoformCol];
                                 if (name) names.push(String(name));
                             }
-                            var filterString = names.join('|');
+                            var filterString = names.join('\n');
                             if (filterString) {
-                                prompt("Isoform names (pipe-separated):", filterString);
+                                prompt("Isoform names (one per line, ready to paste into Table Browser):", filterString);
                             } else {
                                 alert("No isoform names to copy. Select rows or apply filters first.");
                             }
