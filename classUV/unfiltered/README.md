@@ -1,18 +1,18 @@
-# classUV_mm39_SQANTI3_Hub
+# classUV_unfiltered_hg38_SQANTI3_Hub
 
-This hub displays SQANTI3 transcriptome analysis results for the mm39 genome assembly.
+This hub displays SQANTI3 transcriptome analysis results for the hg38 genome assembly.
 
 ## 🚀 Usage Instructions
 
 1. Upload all files in this directory to a web-accessible location (e.g., GitHub).
 2. In the UCSC Genome Browser, go to **My Data → Track Hubs**.
 3. Enter the URL to your `hub.txt` file.
-4. Select the appropriate genome assembly (mm39).
+4. Select the appropriate genome assembly (hg38).
 5. The SQANTI3 tracks will appear in your track list.
 
 ## 🔍 Advanced Filtering
 
-This hub uses the bigBed 12+50 format with native UCSC filters. Right-click on the track and select "Configure" or "Filter" to access controls.
+This hub uses the bigBed 12+49 format with native UCSC filters. Right-click on the track and select "Configure" or "Filter" to access controls.
 
 ## 🔎 Trix Search
 
