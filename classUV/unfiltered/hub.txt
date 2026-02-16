@@ -1,6 +1,6 @@
-hub classUV_unfiltered_hg38_SQANTI3_Hub
-shortLabel classUV_unfiltered_hg38_SQANTI3_Hub
-longLabel SQANTI3 Transcriptome Analysis for hg38
+hub classUV_unfiltered_mm39_SQANTI3_Hub
+shortLabel classUV_unfiltered_mm39_SQANTI3_Hub
+longLabel SQANTI3 Transcriptome Analysis for mm39
 genomesFile genomes.txt
 email sqanti3_user@users.noreply.github.com
 descriptionUrl README.md

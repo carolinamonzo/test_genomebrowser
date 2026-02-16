@@ -1,5 +1,5 @@
-track hg38_sqanti3
-bigDataUrl hg38_sqanti3.bb
+track mm39_sqanti3
+bigDataUrl mm39_sqanti3.bb
 shortLabel SQANTI3 Transcripts
 longLabel SQANTI3 Transcriptome Analysis Results
 type bigBed 12 + 49
@@ -144,12 +144,12 @@ visibility pack
 group transcripts
 itemRgb on
 priority 1
-html hg38_sqanti3_track.html
+html mm39_sqanti3_track.html
 searchIndex name
 searchTrix trix.ix
 
-track hg38_sqanti3_full-splice_match
-bigDataUrl hg38_sqanti3_full-splice_match.bb
+track mm39_sqanti3_full-splice_match
+bigDataUrl mm39_sqanti3_full-splice_match.bb
 shortLabel SQANTI3 full-splice_match
 longLabel SQANTI3 full-splice_match transcripts
 type bigBed 12 + 49
@@ -157,7 +157,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_full-splice_match.html
+html mm39_sqanti3_full-splice_match.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -296,8 +296,8 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track hg38_sqanti3_novel_in_catalog
-bigDataUrl hg38_sqanti3_novel_in_catalog.bb
+track mm39_sqanti3_novel_in_catalog
+bigDataUrl mm39_sqanti3_novel_in_catalog.bb
 shortLabel SQANTI3 novel_in_catalog
 longLabel SQANTI3 novel_in_catalog transcripts
 type bigBed 12 + 49
@@ -305,7 +305,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_novel_in_catalog.html
+html mm39_sqanti3_novel_in_catalog.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -444,8 +444,8 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track hg38_sqanti3_novel_not_in_catalog
-bigDataUrl hg38_sqanti3_novel_not_in_catalog.bb
+track mm39_sqanti3_novel_not_in_catalog
+bigDataUrl mm39_sqanti3_novel_not_in_catalog.bb
 shortLabel SQANTI3 novel_not_in_catalog
 longLabel SQANTI3 novel_not_in_catalog transcripts
 type bigBed 12 + 49
@@ -453,7 +453,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_novel_not_in_catalog.html
+html mm39_sqanti3_novel_not_in_catalog.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -592,8 +592,8 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track hg38_sqanti3_incomplete-splice_match
-bigDataUrl hg38_sqanti3_incomplete-splice_match.bb
+track mm39_sqanti3_incomplete-splice_match
+bigDataUrl mm39_sqanti3_incomplete-splice_match.bb
 shortLabel SQANTI3 incomplete-splice_match
 longLabel SQANTI3 incomplete-splice_match transcripts
 type bigBed 12 + 49
@@ -601,7 +601,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_incomplete-splice_match.html
+html mm39_sqanti3_incomplete-splice_match.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -740,8 +740,8 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track hg38_sqanti3_antisense
-bigDataUrl hg38_sqanti3_antisense.bb
+track mm39_sqanti3_antisense
+bigDataUrl mm39_sqanti3_antisense.bb
 shortLabel SQANTI3 antisense
 longLabel SQANTI3 antisense transcripts
 type bigBed 12 + 49
@@ -749,7 +749,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_antisense.html
+html mm39_sqanti3_antisense.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -889,8 +889,8 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track hg38_sqanti3_fusion
-bigDataUrl hg38_sqanti3_fusion.bb
+track mm39_sqanti3_fusion
+bigDataUrl mm39_sqanti3_fusion.bb
 shortLabel SQANTI3 fusion
 longLabel SQANTI3 fusion transcripts
 type bigBed 12 + 49
@@ -898,7 +898,7 @@ visibility hide
 group transcripts
 itemRgb on
 priority 3
-html hg38_sqanti3_fusion.html
+html mm39_sqanti3_fusion.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
