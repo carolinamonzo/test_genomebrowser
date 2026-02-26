@@ -162,6 +162,17 @@ group validation
 priority 2
 html SIRVs_star_sj_track.html
 
+track SIRVs_reference
+bigDataUrl SIRVs_reference.bb
+shortLabel pacbio_isoforms Reference
+longLabel pacbio_isoforms Reference Genome Annotation
+type bigBed 12
+visibility pack
+group validation
+priority 5
+color 70,70,70
+html SIRVs_reference_track.html
+
 track SIRVs_sqanti3_full-splice_match
 bigDataUrl SIRVs_sqanti3_full-splice_match.bb
 shortLabel pacbio_isoforms SQANTI3 full-splice_match
