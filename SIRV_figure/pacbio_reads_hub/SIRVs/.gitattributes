@@ -1,0 +1,17 @@
+*.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_antisense.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_full-splice_match.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_incomplete-splice_match.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_star_sj.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_reference.bb filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_antisense.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_full-splice_match.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_incomplete-splice_match.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_sqanti3_track.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_star_sj_track.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_genome.html filter=lfs diff=lfs merge=lfs -text
+SIRVs_reference_track.html filter=lfs diff=lfs merge=lfs -text
+SIRVs.2bit filter=lfs diff=lfs merge=lfs -text
+trix.ix filter=lfs diff=lfs merge=lfs -text
+trix.ixx filter=lfs diff=lfs merge=lfs -text
