@@ -11,7 +11,7 @@ filter.exons 0:400
 filterByRange.exons on
 filterLimits.exons 0:400
 filterLabel.exons Number of exons
-filterValues.structural_category antisense,full-splice_match,incomplete-splice_match
+filterValues.structural_category full-splice_match,incomplete-splice_match,novel_not_in_catalog
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -43,7 +43,7 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterValues.subcategory 3prime_fragment,alternative_5end,multi-exon,reference_match
+filterValues.subcategory 3prime_fragment,alternative_5end,at_least_one_novel_splicesite,intron_retention,reference_match
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
 filterValues.RTS_stage False
 filterLabel.RTS_stage RTS stage
@@ -90,7 +90,7 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterValues.FSM_class B,C
+filterValues.FSM_class C
 filterLabel.FSM_class FSM class (A, B, C, D)
 filterValues.coding non_coding
 filterLabel.coding Coding status (coding, non_coding)
@@ -475,16 +475,16 @@ filterByRange.blockCount on
 filterLimits.blockCount 0:400
 filterLabel.blockCount Number of exons (from BED)
 
-track SIRVs_sqanti3_antisense
-bigDataUrl SIRVs_sqanti3_antisense.bb
-shortLabel pacbio_reads SQANTI3 antisense
-longLabel pacbio_reads SQANTI3 antisense transcripts
+track SIRVs_sqanti3_novel_not_in_catalog
+bigDataUrl SIRVs_sqanti3_novel_not_in_catalog.bb
+shortLabel pacbio_reads SQANTI3 novel_not_in_catalog
+longLabel pacbio_reads SQANTI3 novel_not_in_catalog transcripts
 type bigBed 12 + 49
 visibility hide
 group transcripts
 itemRgb on
 priority 3
-html SIRVs_sqanti3_antisense.html
+html SIRVs_sqanti3_novel_not_in_catalog.html
 filter.length 0:150000
 filterByRange.length on
 filterLimits.length 0:150000
@@ -493,7 +493,7 @@ filter.exons 0:400
 filterByRange.exons on
 filterLimits.exons 0:400
 filterLabel.exons Number of exons
-filterValues.structural_category antisense
+filterValues.structural_category novel_not_in_catalog
 filterLabel.structural_category Structural category (FSM, ISM, NIC, NNC, etc.)
 filterText.associated_gene *
 filterType.associated_gene wildcard
@@ -525,7 +525,7 @@ filter.diff_to_gene_TTS -100000:100000
 filterByRange.diff_to_gene_TTS on
 filterLimits.diff_to_gene_TTS -100000:100000
 filterLabel.diff_to_gene_TTS Distance to gene TTS
-filterValues.subcategory multi-exon
+filterValues.subcategory at_least_one_novel_splicesite,intron_retention
 filterLabel.subcategory Subcategory (mono-exon, multi-exon, etc.)
 filterValues.RTS_stage False
 filterLabel.RTS_stage RTS stage
@@ -572,7 +572,7 @@ filter.ratio_exp 0:1
 filterByRange.ratio_exp on
 filterLimits.ratio_exp 0:1
 filterLabel.ratio_exp Expression ratio (isoform/gene)
-filterValues.FSM_class B
+filterValues.FSM_class C
 filterLabel.FSM_class FSM class (A, B, C, D)
 filterValues.coding non_coding
 filterLabel.coding Coding status (coding, non_coding)
