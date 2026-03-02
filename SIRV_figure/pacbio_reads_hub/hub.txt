@@ -1,0 +1,6 @@
+hub pacbio_reads
+shortLabel pacbio_reads
+longLabel SQANTI3 Transcriptome Analysis for SIRVs
+genomesFile genomes.txt
+email sqanti3_user@users.noreply.github.com
+descriptionUrl README.md
