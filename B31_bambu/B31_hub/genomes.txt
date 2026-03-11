@@ -1,0 +1,3 @@
+genome mm39
+trackDb mm39/trackDb.txt
+groups mm39/groups.txt
