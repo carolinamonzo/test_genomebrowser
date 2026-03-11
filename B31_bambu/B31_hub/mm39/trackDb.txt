@@ -161,3 +161,25 @@ visibility full
 group validation
 priority 2
 html mm39_star_sj_track.html
+
+track mm39_cage_peaks
+bigDataUrl mm39_cage_peaks.bb
+shortLabel B31_hub CAGE Peaks
+longLabel B31_hub CAGE Peaks (TSS Validation)
+type bigBed 9
+itemRgb on
+visibility dense
+group validation
+priority 3
+html mm39_cage_peaks_track.html
+
+track mm39_polya_peaks
+bigDataUrl mm39_polya_peaks.bb
+shortLabel B31_hub PolyA Peaks
+longLabel B31_hub PolyA Site Peaks (TTS Validation)
+type bigBed 9
+itemRgb on
+visibility dense
+group validation
+priority 4
+html mm39_polya_peaks_track.html
