@@ -1,0 +1,6 @@
+hub young_mouse
+shortLabel young_mouse
+longLabel SQANTI3 Transcriptome Analysis for mm39
+genomesFile genomes.txt
+email sqanti3_user@users.noreply.github.com
+descriptionUrl README.md
